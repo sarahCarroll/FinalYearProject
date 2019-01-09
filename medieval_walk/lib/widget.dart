@@ -7,11 +7,11 @@ class Texty extends StatelessWidget {
   }
 }
 
-class MyExploreWidget extends StatelessWidget {
+class MyImageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var assetsImage = new AssetImage("assets/explore.jpg");
-    var image = new Image(image: assetsImage, width: 48.0, height: 48.0);
+    var image = new Image(image: assetsImage, width: 550.0, height: 412.0);
     return Container(child: image);
   }
 }
