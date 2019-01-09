@@ -15,3 +15,12 @@ class MyImageWidget extends StatelessWidget {
     return Container(child: image);
   }
 }
+
+class MyKingsWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    var assetsImages = new AssetImage("assets/kings.jpg");
+    var image2 = new Image(image: assetsImages, width: 550.0, height: 412.0);
+    return Container(child: image2);
+  }
+}
