@@ -50,6 +50,14 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  int _counter = 0;
+
+  void _incrementCounter() {
+    setState(() {
+      Navigator.pushNamed(context, MyHallPage.routeName);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -66,18 +74,15 @@ class _MyHomePageState extends State<MyHomePage> {
           centerTitle: true,
         ),
         body: new ListView(children: <Widget>[
-          //calling the myImageWidget class deefined in the widget.dart
           new MyImageWidget(),
-          //raised button that on click navigates to the hall of the red earl Page
           new RaisedButton(
-              child: Text('Hall Of The Red Earl',
-                  style:
-                      TextStyle(fontStyle: FontStyle.italic, fontSize: 15.0)),
+              child: Text('Hall Of The Red Earl'),
               onPressed: () {
                 Navigator.pushNamed(context, MyHallPage.routeName);
+                //MaterialPageRoute(builder: (context) => ));
               }),
-          //new Text("Hall Of The Red Earl",
-          //    style: TextStyle(fontStyle: FontStyle.italic, fontSize: 15.0)),
+          new Text("Hall Of The Red Earl",
+              style: TextStyle(fontStyle: FontStyle.italic, fontSize: 15.0)),
           new MyKingsWidget(),
           new Text("Kings Head",
               style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20.0)),
@@ -96,7 +101,7 @@ class MyHallPage extends StatefulWidget {
   _MyHallPageState createState() => new _MyHallPageState();
 }
 
-class _MyHallPageState extends State<MyHomePage> {
+class _MyHallPageState extends State<MyHallPage> {
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
