@@ -7,6 +7,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    var routes = <String, WidgetBuilder>{
+      MyHallPage.routeName: (BuildContext context) => new MyHallPage(
+            title: "MyHallPage",
+          )
+    };
     return new MaterialApp(
       title: 'Flutter Demo',
       theme: new ThemeData(
@@ -21,6 +26,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: new MyHomePage(title: 'Medieval walking tour'),
+      routes: routes,
     );
   }
 }
@@ -44,19 +50,53 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
+  @override
+  Widget build(BuildContext context) {
+    // This method is rerun every time setState is called, for instance as done
+    // by the _incrementCounter method above.
+    //
+    // The Flutter framework has been optimized to make rerunning build methods
+    // fast, so that you can just rebuild anything that needs updating rather
+    // than having to individually change instances of widgets.
+    return new Scaffold(
+        appBar: new AppBar(
+          // Here we take the value from the MyHomePage object that was created by
+          // the App.build method, and use it to set our appbar title.
+          title: new Text(widget.title),
+          centerTitle: true,
+        ),
+        body: new ListView(children: <Widget>[
+          //calling the myImageWidget class deefined in the widget.dart
+          new MyImageWidget(),
+          //raised button that on click navigates to the hall of the red earl Page
+          new RaisedButton(
+              child: Text('Hall Of The Red Earl',
+                  style:
+                      TextStyle(fontStyle: FontStyle.italic, fontSize: 15.0)),
+              onPressed: () {
+                Navigator.pushNamed(context, MyHallPage.routeName);
+              }),
+          //new Text("Hall Of The Red Earl",
+          //    style: TextStyle(fontStyle: FontStyle.italic, fontSize: 15.0)),
+          new MyKingsWidget(),
+          new Text("Kings Head",
+              style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20.0)),
+        ]));
   }
+}
 
+class MyHallPage extends StatefulWidget {
+  MyHallPage({Key key, this.title}) : super(key: key);
+
+  static const String routeName = "/MyHallPage";
+
+  final String title;
+
+  @override
+  _MyHallPageState createState() => new _MyHallPageState();
+}
+
+class _MyHallPageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -75,8 +115,7 @@ class _MyHomePageState extends State<MyHomePage> {
           new MyImageWidget(),
           new Text("Hall Of The Red Earl",
               style: TextStyle(fontStyle: FontStyle.italic, fontSize: 15.0)),
-          new MyKingsWidget(),
-          new Text("Kings Head",
+          new Text("This is all the information about the hall of the red earl",
               style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20.0)),
         ]));
   }
