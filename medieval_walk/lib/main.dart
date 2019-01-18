@@ -1,7 +1,46 @@
 import 'package:flutter/material.dart';
 import 'package:medieval_walk/widget.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 void main() => runApp(new MyApp());
+
+//void main() => runApp(Mymap());
+
+class Mymap extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<Mymap> {
+  GoogleMapController mapController;
+
+  final LatLng _center = const LatLng(45.521563, -122.677433);
+
+  void _onMapCreated(GoogleMapController controller) {
+    mapController = controller;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Maps Sample App'),
+          backgroundColor: Colors.green[700],
+        ),
+        body: GoogleMap(
+          onMapCreated: _onMapCreated,
+          options: GoogleMapOptions(
+            cameraPosition: CameraPosition(
+              target: _center,
+              zoom: 11.0,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -81,8 +120,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 Navigator.pushNamed(context, MyHallPage.routeName);
                 //MaterialPageRoute(builder: (context) => ));
               }),
-          new Text("Hall Of The Red Earl",
-              style: TextStyle(fontStyle: FontStyle.italic, fontSize: 15.0)),
           new MyKingsWidget(),
           new Text("Kings Head",
               style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20.0)),
