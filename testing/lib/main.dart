@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:map_view/map_view.dart';
 import 'package:testing/widget.dart';
+import 'package:map_view/figure_joint_type.dart';
+import 'package:map_view/polygon.dart';
 
 var myKey = "AIzaSyDzLAc2Uos2XNBT26mMJRqQ33aHoSnF0oM";
 
@@ -44,6 +46,10 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   MapView mapView = new MapView();
 
+  List<Marker> markers = <Marker>[
+    new Marker("Hall Of The Red Earm", " ", 53.2710, -9.0537)
+  ];
+
   displayMap() {
     mapView.show(new MapOptions(
       mapViewType: MapViewType.normal,
@@ -52,6 +58,11 @@ class _MyHomePageState extends State<MyHomePage> {
           new CameraPosition(new Location(53.2707, -9.0568), 15.0),
       title: "google map",
     ));
+
+    mapView.onMapTapped.listen((tapped) {
+      mapView.setMarkers(markers);
+      mapView.zoomToFit(padding: 100);
+    });
   }
 
   @override
