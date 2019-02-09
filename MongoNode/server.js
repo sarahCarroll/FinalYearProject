@@ -11,14 +11,17 @@ const MongoClient = require("mongodb").MongoClient;
 
 
 
-app.set('index', path.join(__dirname, 'index.html'));
+//app.set('index', path.join(__dirname, 'index.html'));
 
-let info = require('./info');
+//let Info = require('./info');
+
 
 //var mongooseConnectionString = 'mongodb:/' + '/5:27017/reports';
 
  mongoose.connect("mongodb://localhost:27017/myproject");
- let db = mongoose.connection;
+ var db = mongoose.connection;
+ 
+ Info = require('./info.js');
 app.listen(3000, function() {
   console.log('listening on 3000/')
 })
@@ -33,7 +36,30 @@ db.on('error', function(error){
 	console.log(err);
 });
 
+app.get('/',function(req, res){
+         res.send('Please use /api/info');
+});
+
+app.get('/api/info',function(req, res){
+         console.log(res.body);
+         Info.getInfo(function(err, info){
+
+                 if(err){
+                        throw err;
+                 }
+                 res.json(info);
+         });
+});
+/*
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html')
-  })
-//34.242.41.209/3000 ip lookup
+  Info.find({}, function(err, info){
+	  res.render('index', {
+		  title:'Information',
+	  info : info
+	  });
+  });
+  })//app.get
+//34.242.41.209/3000 ip lookup*/
+
+
