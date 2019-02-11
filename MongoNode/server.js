@@ -6,9 +6,7 @@ const app = express();
 const mongoose = require('mongoose');
 const MongoClient = require("mongodb").MongoClient;
 
-
-
-
+Info = require('./models/info.js');
 
 
 //app.set('index', path.join(__dirname, 'index.html'));
@@ -21,7 +19,23 @@ const MongoClient = require("mongodb").MongoClient;
  mongoose.connect("mongodb://localhost:27017/myproject");
  var db = mongoose.connection;
  
- Info = require('./info.js');
+
+ 
+ app.get('/',function(req, res){
+         res.send('Please use /api/info');
+});
+
+app.get('/api/info',function(req, res){
+         console.log(res.body);
+         Info.getInfo(function(err, infos){
+
+                 if(err){
+                        throw err;
+                 }
+                 res.json(infos);
+         });
+});
+
 app.listen(3000, function() {
   console.log('listening on 3000/')
 })
@@ -36,20 +50,7 @@ db.on('error', function(error){
 	console.log(err);
 });
 
-app.get('/',function(req, res){
-         res.send('Please use /api/info');
-});
 
-app.get('/api/info',function(req, res){
-         console.log(res.body);
-         Info.getInfo(function(err, info){
-
-                 if(err){
-                        throw err;
-                 }
-                 res.json(info);
-         });
-});
 /*
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html')

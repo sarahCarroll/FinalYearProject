@@ -15,15 +15,12 @@ var infoSchema = mongoose.Schema({
 			 type: String,
 			 required: true
 			 }
-			 
-		/*_id: String,
-         title: String,
-         author: String,*/
     
 });
 
-var Info = module.exports = mongoose.model('info', infoSchema);
+var Info = module.exports = mongoose.model('Info', infoSchema);
 
+// get info
 module.exports.getInfo = function(callback, limit){
          Info.find(callback).limit(limit);
 }
