@@ -5,3 +5,6 @@
 \contentsline {section}{\numberline {2.1}Context of the Project}{6}{section.2.1}% 
 \contentsline {section}{\numberline {2.2}Objectives}{6}{section.2.2}% 
 \contentsline {section}{\numberline {2.3}Overview}{7}{section.2.3}% 
+\contentsline {chapter}{\numberline {3}Methodology}{8}{chapter.3}% 
+\contentsline {section}{\numberline {3.1}Selection Criteria}{8}{section.3.1}% 
+\contentsline {section}{\numberline {3.2}Testing and Validation}{9}{section.3.2}% 

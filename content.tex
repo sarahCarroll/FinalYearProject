@@ -3,14 +3,81 @@
 \chapter*{About this project}
 \paragraph{Abstract}
 
-Nutritional information is provided on products using different size metrics such as Per 100g serving, Per Unit (whole item) serving and in some cases a serving size suggestion. Due to a need to compute and calculate the nutritional benefit of a product, consumers can in some cases be misled into getting a less healthy product based on how the information and sizes are presented on each product. Furthermore, consumers trying to make purchase decisions may not have the time or ability to calculate and compare two products sugar content during a shopping trip.
+Dúchas Na Gaillimhe Galway Civic Trust along with tourism Ireland carry out walking tours of Galway city to inform tourist of Galways history. One of the walks they offer tourist during the summer months is a medieval walking tour of Galway city. This walk visits seven locations starting at Galways Latin Quarter.However This limits tourist to attend lead tours at certain hours as well as only being available frequently during the summer tourism season.
 
-This project aims to deliver a solution which helps the general public to better comprehend the nutritional benefit of their product choices by breaking down nutritional metrics like the sugar content of a product and presenting the data in a format which is easier to visualise than adding up grams. In addition to this, with access to data of other food and drink products, suggestions can be provided to the user which are similar types of products but have less sugar. 
-The proposed solution will be comprised of a mobile application which will allow users to scan food and drink product's barcodes and receive suggestions of similar products with a lower sugar count. Values for both the scanned product and suggestions sugar content will be displayed.
+This project aims to deliver a solution which helps the tourist of Galway city carry of the medieval walking tour of Galway city without the 
+need of a guide and available at any time of the year. If the tourist wishes to seek further information they can drop into Dúchas Na Gallimhe Galway Civic Trust office which is located at one of the stops,The Hall Of the Red Earl.
+
+The proposed solution will be comprised of a mobile application which will allow users to be guided around Galway city. It will show the user their location vs. the destination they must reach.On arrival to the destination, give the used information and images on the location. A user can find out extra information if they wish. There will also be a web application used by Galway Civic Trust to update the information on the application public to all users.
+
 \paragraph{Authors}
 Sarah Carroll, Abigail Culkin
 B.Sc.(Hons) in Software Development
 
-
-
 \chapter{Introduction}
+
+In the beginning of Year 4 in Software Development at GMIT, the authors were given the opportunity to work on the Medieval walking tour project for an external small/medium Enterprise organised through GMIT. The idea of the project is based on the problem that medieval walking tours of galway city are not always available for tourists. 
+
+The Project intends to make walking tours of Galway city more accessible and easy to follow for tourists. This will up tourism in Ireland along with bring more visitors to the hidden wonders of Galway city.
+
+\chapter{Context}
+
+\section{Context of the Project}
+
+The context of this project revolves around the use case of being a tourist in galway city, wishing to find out more information about the cities history. Opening the app on your phone,viewing your location is relation to the spots on the guided tour. This application prevents the user getting lost and gives them accurate information about each location.  The information on the application was provided by Galway Civic trust and is the same information tourist get on the guided walking tours. Reading the data and retrieving images from the database needs to be very fast, as any delayed hang in performing could cause a bad user experience.
+
+The project will be developed as a Cross-Platform application which provides users with images, information and a map of Galway city and the 5 medieval stops along the tour. Users of the application can get their location in relation to the exact location of the points of the tour at any given time. When the user decides they wish to learn more information about a specific location, the user will get images and text about the location on the application. Along with the application a web application will be developed for use by galway civic trust to update delete or add information to the application.
+
+\section{Objectives} 
+
+
+The project will require a number of objectives to be accomplished in order to provide a solution that works and is suitable for the use of Galway Civic Trust. 
+
+\begin{itemize}
+\item A Mongo database will be used to store the text and images which appear in the application. This database will need to be setup and hosted in such a way that it can be accessed from clients on the web. The database will be hosted on Amazon Web Services Cloud.
+
+\item A client application will be the main product / asset for the project. This application will be able to locate the user via the gps on the mobile. The app will then show the user the locations of each point on the tour. This will get the user an idea of how long they are from the point and will allow then to see when they have reached their location.
+
+\item Another requirement is to develop a web application for the use of the company to allow them to modify the information shown to the user.
+
+\item Use google maps Api within the mobile application to show the user their location along with the specific points of the tour.
+
+\item Pull information from the mongo db using node.js
+
+
+\end{itemize}
+\section{Overview}
+
+Each Chapter of this paper will contain different details regarding the project. 
+
+The Methodologies will describe the way in which decisions were made about the project. The way in which software development and research methodology was addressed. The aids used to help working in a team will also be discussed.
+
+The technology review will go into more detail on the different technologies used throughout the project and the reasoning for choosing each. An example of these technologies are node.js.
+
+The System Design will provide a detailed explanation of the overall system architecture. The how of the project.
+
+The System Evaluation compares the project against the initial objectives set out in the introduction. This will also include how new features could be included for the customer.
+
+The concluding briefly summarises the context and objectives of the project.
+
+\chapter{Methodology}
+
+\section{Selection Criteria}
+
+During the initial planning of this project. The frames works considered included ionic,flutter and Xamarin. The winner was the flutter framework. This is a new framework introduced by google. It is built using the dart programming language. Flutter has multiple benefits including its simplicity to be used for cross platform applications.
+
+Flutter is maintained on a single code base for all platforms. This enables simplicity for testing and reduces development time. For this reason it was chosen over Xamerin framework. Xamerin is a c sharp based platform. Flutter offers APIs and SDKs for 2D rendering, simulation, gestures, and painting as well as allowing the use of existing Swift, Objective C, and Java code. It comes with Machine Design Widgets, also a Google product. (https://www.altexsoft.com/blog/engineering/flutter-vs-xamarin-cross-platform-mobile-development-compared/)
+
+Flutter and ionic are very similar is what they offer with regards to pre-build components in ionic and a comprehensive suite of built in widgets in ionic.(https://www.academind.com/learn/flutter/react-native-vs-flutter-vs-ionic-vs-nativescript-vs-pwa/). With Ionic, you create a real native app but you do this by creating a web app (with HTML, JS and CSS) which will be wrapped by a real native app that hosts a webview while flutter you write Dart code which can be compiled to native code that runs on the target device. The main reasoning for using flutter over ionic is that it is new. It is powered by google and therefore is well documented and although its still in beta testing there are loads of interactive talks online about the upcoming and new features of flutter. 
+
+\section{Testing and Validation}
+Testing is an essential part of the a software development life cycle.The importance of testing in software development life cycle is to improve reliability, performance and other important factors.(https://www.ijser.org/researchpaper/Importance-of-Testing-in-Software-
+Development-Life-Cycle.pdf) Each component of the project can be tested indiviually. This is done by performing unit tests on indivual components. Unit tests can test that visual aspects of the application are working correctly along with connection to database.
+
+A widget test (in other UI frameworks referred to as component test) tests a single widget. Testing a widget involves multiple classes and requires a test environment that provides the appropriate widget lifecycle context. (https://flutter.io/docs/testing).
+
+
+
+ 
+
+
