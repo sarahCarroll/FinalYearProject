@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:map_view/map_view.dart';
 import 'package:testing/widget.dart';
-import 'package:testing/hall.dart';
+import 'dart:async';
 
 var myKey = "AIzaSyDzLAc2Uos2XNBT26mMJRqQ33aHoSnF0oM";
 
@@ -19,55 +19,98 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.brown,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MySplashPage(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+class MySplashPage extends StatefulWidget {
+  MySplashPage({Key key, this.title}) : super(key: key);
 
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _MySplashPageState createState() => _MySplashPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MySplashPageState extends State<MySplashPage> {
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Timer(
+        Duration(seconds: 5),
+        () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => _MyHomePageState()),
+            ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: new AppBar(
           // Here we take the value from the MyHomePage object that was created by
           // the App.build method, and use it to set our appbar title.
-          title: new Text(widget.title),
+          title: new Text(""),
           centerTitle: true,
         ),
         body: new ListView(children: <Widget>[
-          new MyImageWidget(),
-          new RaisedButton(
-              child: Text('Hall Of The Red Earl'),
-              onPressed: () {
-                //Navigator.pushNamed(context, MyHallPage.routeName);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => _MyHallPageState()),
-                );
-                //MaterialPageRoute(builder: (context) => ));
-              }),
-          new MyKingsWidget(),
-          new Container(
-            child: RaisedButton(
-                child: Text('Kings Head'),
-                elevation: 7.8,
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Map()),
-                  );
-                }),
+          new Text(
+            "Medieval Walking Tour",
+            textAlign: TextAlign.center,
           ),
+          new Text(
+            "athors: Abigail Culkin and Sarah Carroll",
+            textAlign: TextAlign.center,
+          )
         ]));
+  }
+}
+
+// class MyHomePage extends StatefulWidget {
+//   MyHomePage({Key key, this.title}) : super(key: key);
+
+//   final String title;
+
+//   @override
+//   _MyHomePageState createState() => _MyHomePageState();
+// }
+
+class _MyHomePageState extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        // appBar: new AppBar(
+        //   // Here we take the value from the MyHomePage object that was created by
+        //   // the App.build method, and use it to set our appbar title.
+        //   title: new Text("widget.title"),
+        //   centerTitle: true,
+        // ),
+        body: new ListView(children: <Widget>[
+      new MyImageWidget(),
+      new RaisedButton(
+          child: Text('Hall Of The Red Earl'),
+          onPressed: () {
+            //Navigator.pushNamed(context, MyHallPage.routeName);
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => _MyHallPageState()),
+            );
+            //MaterialPageRoute(builder: (context) => ));
+          }),
+      new MyKingsWidget(),
+      new Container(
+        child: RaisedButton(
+            child: Text('Kings Head'),
+            elevation: 7.8,
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Map()),
+              );
+            }),
+      ),
+    ]));
   }
 }
 
@@ -120,7 +163,9 @@ class Map extends StatelessWidget {
         appBar: new AppBar(
           title: new Text("Hall Of the Red Earl"),
         ),
-        body: displayMap());
+        body: new ListView(children: <Widget>[
+          displayMap(),
+        ]));
   }
 }
 
@@ -161,7 +206,8 @@ class _MyHallPageState extends StatelessWidget {
                 //Navigator.pushNamed(context, MyHallPage.routeName);
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => _MyHallPageStateMore()),
+                  MaterialPageRoute(
+                      builder: (context) => _MyHallPageStateMore()),
                 );
                 //MaterialPageRoute(builder: (context) => ));
               }),
