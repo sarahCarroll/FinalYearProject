@@ -9,7 +9,7 @@ services:
   environment:
    - ENV=development
    - PORT=80
-   - DB=mongodb://mongodb:27017/todoDev
+   - DB=mongodb://mongodb:27017/project_db
  mongodb:
   image: mongo:latest
   container_name: "mongodb"
