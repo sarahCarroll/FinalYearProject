@@ -25,4 +25,4 @@ def get_root_logger(logger_name, filename=None):
 
 
 def get_child_logger(root_logger, name):
-return logging.getLogger('.'.join([root_logger, name]))
+    return logging.getLogger('.'.join([root_logger, name]))
