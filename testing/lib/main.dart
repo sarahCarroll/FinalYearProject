@@ -179,7 +179,7 @@ _MyHallPageStateMore createState() => new _MyHallPageStateMore();
 
 class _MyHallPageStateMore extends State<_MyHallPageStateDB> {
  final String url = "http://35.189.123.3/data?";
-  List data;
+ List info;
   
   @override
   void initState(){
@@ -197,12 +197,12 @@ class _MyHallPageStateMore extends State<_MyHallPageStateDB> {
 
     print(response.body);
 
-    setState((){
+   setState((){
       var convertDataToJson = jsonDecode(response.body);
-      data = convertDataToJson['description'];
+      info = convertDataToJson['data'];
     });
 
-    return "Success";
+     return "Success";
   }
  
   @override
@@ -211,40 +211,19 @@ class _MyHallPageStateMore extends State<_MyHallPageStateDB> {
         appBar: new AppBar(
           title: new Text("Hall Of the Red Earl"),
         ), //AppBar
-        body: new ListView.builder(
-
-           
-         
-          //print db
-          itemCount: data == null ? 0 : data.length,
-          itemBuilder: (BuildContext context, int index){
-          return new Container(
-            child: new Center(
-              child: new Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-               new MyImageWidget(),
-                new Text("Hall Of The Red Earl",
-                style: TextStyle(fontStyle: FontStyle.italic, fontSize: 15.0)),
-                 new Text("MESSAGE- long getting info from db",
-                style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20.0)),
-          
-                new Card(
-                  child: new Container(
-                    child: new Text(data[index]['title']),
-                    padding: const EdgeInsets.all(20.0),
-                  ), //child container
-                )//card
-                ] //widget
-              )// Column
-            ) //center
-          );//container
-          },
-
-        ));
+        body: new ListView(children: <Widget>[
+          new MyImageWidget(),
+          new Text("Hall Of The Red Earl",
+              style: TextStyle(fontStyle: FontStyle.italic, fontSize: 15.0)),
+          new Text("MESSAGE- long getting info from db",
+              style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20.0)),
+  
+  ]));
   }
 }
 
+
+//  new Text(data[index]['info']),
 class _MyHallPageState extends StatelessWidget {
 
 
