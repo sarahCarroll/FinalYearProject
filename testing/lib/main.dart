@@ -109,7 +109,7 @@ class _MyHomePageState extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Map()),
+                MaterialPageRoute(builder: (context) => Map1()),
               );
             }),
       ),
@@ -117,7 +117,7 @@ class _MyHomePageState extends StatelessWidget {
   }
 }
 
-class Map extends StatelessWidget {
+class Map1 extends StatelessWidget {
   MapView mapView = new MapView();
 
   List<Marker> markers = <Marker>[
@@ -178,8 +178,8 @@ _MyHallPageStateMore createState() => new _MyHallPageStateMore();
 }
 
 class _MyHallPageStateMore extends State<_MyHallPageStateDB> {
- final String url = "http://35.189.123.3/data?";
- List info;
+final String url = "http://35.189.123.3/data?";
+ //List data;
   
   @override
   void initState(){
@@ -192,19 +192,44 @@ class _MyHallPageStateMore extends State<_MyHallPageStateDB> {
       //encode the url
       Uri.encodeFull(url),
       //only accept json response
-      headers: {"Accept": "application/json"}
+      headers: {"content-type": "application/json"}
     );
 
-    print(response.body);
+    //print(response.body);
 
-   setState((){
+   // List data; 
+   /*setState((){
       var convertDataToJson = jsonDecode(response.body);
-      info = convertDataToJson['data'];
-    });
+      data = convertDataToJson['info'];
+    });*/
+
+    Map<dynamic, dynamic> data = json.decode(response.body);
+    print(data["title"]);
+   // List data; 
+   // print(response.body);
+    //print(data[0]["title"]);
 
      return "Success";
   }
- 
+//Video
+ /* @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+       appBar: new AppBar(
+         title: new Text('My Data'),
+       ),
+      body: new ListView.builder(
+        itemCount: data == null? 0: data.length,
+        itemBuilder: (BuildContext context, i){
+          return new ListTile(
+            title: new Text(data[i]['title']),  
+            subtitle: new Text(data[i]['body']),
+          );
+        }
+        )
+
+    );}
+*/
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
