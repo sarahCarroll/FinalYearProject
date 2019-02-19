@@ -176,11 +176,11 @@ class _MyHallPageStateDB extends StatefulWidget{
   @override
 _MyHallPageStateMore createState() => new _MyHallPageStateMore(); 
 }
-Map<dynamic, dynamic> data;
+
 class _MyHallPageStateMore extends State<_MyHallPageStateDB> {
 final String url = "http://35.189.123.3/data?";
  //List data;
-  
+  Map<dynamic, dynamic> data;
   @override
   void initState(){
     super.initState();
@@ -192,45 +192,55 @@ final String url = "http://35.189.123.3/data?";
       //encode the url
       Uri.encodeFull(url),
       //only accept json response
-      headers: {"content-type": "application/json"}
+      headers: {"Accept": "application/json"}
     );
 
     //print(response.body);
 
-   // List data; 
-   /*setState((){
-      var convertDataToJson = jsonDecode(response.body);
-      data = convertDataToJson['info'];
-    });*/
+   //loads when app page for displaying data is
+   setState((){
+      data = json.decode(response.body);  
+    });
 
-    data = json.decode(response.body);
     print(data["title"]);
     print(data["description"]);
 
    // List data; 
    // print(response.body);
-    //print(data[0]["title"]);
+  //print(data[0]["title"]);
 
      return "Success";
   }
+  
 //Video
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
        appBar: new AppBar(
-         title: new Text('My Data'),
+         title: new Text('Hall Of the Red Earl'),
        ),
-      body: new ListView.builder(
+       //prints 4 times
+
+        body: new ListView.builder(
         itemCount: data == null? 0: data.length,
         itemBuilder: (BuildContext context , i){
           return new ListTile(
-            title: new Text(data['title']),  
+            title: Text(data['title']),  
             subtitle: new Text(data['description']),
           );
         }
         )
 
-    );}
+        );}
+    //prints 1 but error
+    /*  body: Material(
+            child: Column(children: <Widget> [
+               Text(data['title']), 
+             // Text(data["description"]),
+
+              
+            ])));
+  }*/
 
  /*@override
   Widget build(BuildContext context) {
