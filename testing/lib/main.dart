@@ -176,7 +176,7 @@ class _MyHallPageStateDB extends StatefulWidget{
   @override
 _MyHallPageStateMore createState() => new _MyHallPageStateMore(); 
 }
-
+Map<dynamic, dynamic> data;
 class _MyHallPageStateMore extends State<_MyHallPageStateDB> {
 final String url = "http://35.189.123.3/data?";
  //List data;
@@ -203,8 +203,10 @@ final String url = "http://35.189.123.3/data?";
       data = convertDataToJson['info'];
     });*/
 
-    Map<dynamic, dynamic> data = json.decode(response.body);
+    data = json.decode(response.body);
     print(data["title"]);
+    print(data["description"]);
+
    // List data; 
    // print(response.body);
     //print(data[0]["title"]);
@@ -212,7 +214,7 @@ final String url = "http://35.189.123.3/data?";
      return "Success";
   }
 //Video
- /* @override
+  @override
   Widget build(BuildContext context) {
     return new Scaffold(
        appBar: new AppBar(
@@ -220,17 +222,17 @@ final String url = "http://35.189.123.3/data?";
        ),
       body: new ListView.builder(
         itemCount: data == null? 0: data.length,
-        itemBuilder: (BuildContext context, i){
+        itemBuilder: (BuildContext context , i){
           return new ListTile(
-            title: new Text(data[i]['title']),  
-            subtitle: new Text(data[i]['body']),
+            title: new Text(data['title']),  
+            subtitle: new Text(data['description']),
           );
         }
         )
 
     );}
-*/
-  @override
+
+ /*@override
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: new AppBar(
@@ -244,7 +246,7 @@ final String url = "http://35.189.123.3/data?";
               style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20.0)),
   
   ]));
-  }
+  }*/
 }
 
 
