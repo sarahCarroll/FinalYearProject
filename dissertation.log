@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.6960 64-bit) (preloaded format=pdflatex 2019.2.4)  12 FEB 2019 14:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.6960 64-bit) (preloaded format=pdflatex 2019.2.4)  20 FEB 2019 12:28
 entering extended mode
 **./dissertation.tex
 (dissertation.tex
@@ -1054,7 +1054,7 @@ Overfull \hbox (17.62482pt too wide) in paragraph at lines 60--69
 [][] 
  []
 
-<img/gmit-logo.jpg, id=34, 281.853pt x 88.4103pt>
+<img/gmit-logo.jpg, id=62, 281.853pt x 88.4103pt>
 File: img/gmit-logo.jpg Graphic file (type jpg)
 <use img/gmit-logo.jpg>
 Package pdftex.def Info: img/gmit-logo.jpg  used on input line 71.
@@ -1102,26 +1102,26 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 
 ]
 Chapter 1.
+! You can't use `macro parameter character #' in horizontal mode.
+l.21 ...that will satisfy what was asked of them.#
+                                                  
+? 
 [5
 
 ]
-Chapter 2.
-LaTeX Font Info:    Try loading font information for TS1+lmr on input line 37.
-("C:\Users\sarahc\AppData\Local\Programs\MiKTeX 2.9\tex/latex/lm\ts1lmr.fd"
+LaTeX Font Info:    Try loading font information for TS1+lmr on input line 40.
+ ("C:\Users\sarahc\AppData\Local\Programs\MiKTeX 2.9\tex/latex/lm\ts1lmr.fd"
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-[6
+) [6] [7]
+Chapter 2.
 
-] [7]
-Chapter 3.
-
-Overfull \hbox (24.38344pt too wide) in paragraph at lines 71--72
+Overfull \hbox (24.38344pt too wide) in paragraph at lines 74--75
 \OT1/lmr/m/n/12 ionic.(https://www.academind.com/learn/flutter/react-native-vs-
 flutter-vs-ionic-
  []
 
 
-Overfull \hbox (79.2763pt too wide) in paragraph at lines 74--76
+Overfull \hbox (79.2763pt too wide) in paragraph at lines 77--79
 \OT1/lmr/m/n/12 per-for-mance and other im-por-tant factors.(https://www.ijser.
 org/researchpaper/Importance-
  []
@@ -1143,29 +1143,41 @@ Package rerunfilecheck Warning: File `dissertation.out' has changed.
 (rerunfilecheck)                or use package `bookmark'.
 
 Package rerunfilecheck Info: Checksums for `dissertation.out':
-(rerunfilecheck)             Before: 30513D0D2601CB0F0792CEE563A71B1D;48
-(rerunfilecheck)             After:  1DF4F5972429CC39BD886BD4034C1067;453.
+(rerunfilecheck)             Before: 1DF4F5972429CC39BD886BD4034C1067;453
+(rerunfilecheck)             After:  7AD2C1986DAB962402BE48F5C7244C21;471.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 82.
  ) 
 Here is how much of TeX's memory you used:
- 20652 strings out of 492946
- 425810 string characters out of 3125823
+ 20665 strings out of 492946
+ 425979 string characters out of 3125823
  504568 words of memory out of 3000000
- 24141 multiletter control sequences out of 15000+200000
- 41740 words of font info for 35 fonts, out of 3000000 for 9000
+ 24150 multiletter control sequences out of 15000+200000
+ 47634 words of font info for 37 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,5n,79p,824b,391s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Users/sarahc/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-rm.e
-nc}{C:/Users/sarahc/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ts1
-.enc}{C:/Users/sarahc/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-r
-msc.enc}<C:/Users/sarahc/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/l
-m/lmbx12.pfb><C:/Users/sarahc/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pub
-lic/lm/lmcsc10.pfb><C:/Users/sarahc/AppData/Local/Programs/MiKTeX 2.9/fonts/typ
-e1/public/lm/lmr12.pfb><C:/Users/sarahc/AppData/Local/Programs/MiKTeX 2.9/fonts
-/type1/public/lm/lmro12.pfb>
-Output written on dissertation.pdf (9 pages, 331100 bytes).
+ 55i,5n,79p,872b,391s stack positions out of 5000i,500n,10000p,200000b,50000s
+pdfTeX warning (dest): name{section.3.2} has been referenced but does not exi
+st, replaced by a fixed one
+
+pdfTeX warning (dest): name{section.3.1} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{chapter.3} has been referenced but does not exist, 
+replaced by a fixed one
+
+pdfTeX warning (dest): name{section.2.3} has been referenced but does not exist
+, replaced by a fixed one
+
+{C:/Users/sarahc/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ts1.en
+c}{C:/Users/sarahc/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-rm.e
+nc}{C:/Users/sarahc/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-rms
+c.enc}<C:/Users/sarahc/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/
+lmbx12.pfb><C:/Users/sarahc/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publi
+c/lm/lmcsc10.pfb><C:/Users/sarahc/AppData/Local/Programs/MiKTeX 2.9/fonts/type1
+/public/lm/lmr12.pfb><C:/Users/sarahc/AppData/Local/Programs/MiKTeX 2.9/fonts/t
+ype1/public/lm/lmro12.pfb>
+Output written on dissertation.pdf (9 pages, 335147 bytes).
 PDF statistics:
- 120 PDF objects out of 1000 (max. 8388607)
- 23 named destinations out of 1000 (max. 500000)
- 122 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 149 PDF objects out of 1000 (max. 8388607)
+ 27 named destinations out of 1000 (max. 500000)
+ 178 words of extra memory for PDF output out of 10000 (max. 10000000)
 
