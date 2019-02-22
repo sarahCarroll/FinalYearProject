@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:map_view/map_view.dart';
 import 'package:testing/widget.dart';
 import 'dart:async';
+import 'package:testing/maps.dart';
+import 'package:testing/hall.dart';
 
 var myKey = "AIzaSyDzLAc2Uos2XNBT26mMJRqQ33aHoSnF0oM";
 
@@ -106,9 +108,20 @@ class _MyHomePageState extends StatelessWidget {
             //MaterialPageRoute(builder: (context) => ));
           }),
       new MyKingsWidget(),
+      new RaisedButton(
+          child: Text('Kings Head'),
+          onPressed: () {
+            //Navigator.pushNamed(context, MyHallPage.routeName);
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => MyHallPage()),
+            );
+            //MaterialPageRoute(builder: (context) => ));
+          }),
+      new MyNicholasWidget(),
       new Container(
         child: RaisedButton(
-            child: Text('Kings Head'),
+            child: Text('St.Nicholas Church'),
             elevation: 7.8,
             onPressed: () {
               Navigator.push(
@@ -117,142 +130,39 @@ class _MyHomePageState extends StatelessWidget {
               );
             }),
       ),
+      new MyLynchsWidget(),
+      new RaisedButton(
+          child: Text('Lynchs Castle'),
+          onPressed: () {
+            //Navigator.pushNamed(context, MyHallPage.routeName);
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => MyHallPage()),
+            );
+            //MaterialPageRoute(builder: (context) => ));
+          }),
+      new MyBrownesWidget(),
+      new RaisedButton(
+          child: Text('Brownes Doorway'),
+          onPressed: () {
+            //Navigator.pushNamed(context, MyHallPage.routeName);
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => MyHallPage()),
+            );
+            //MaterialPageRoute(builder: (context) => ));
+          }),
+      new MyWallWidget(),
+      new RaisedButton(
+          child: Text('Medieval Walls'),
+          onPressed: () {
+            //Navigator.pushNamed(context, MyHallPage.routeName);
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => MyHallPage()),
+            );
+            //MaterialPageRoute(builder: (context) => ));
+          }),
     ]));
-  }
-}
-
-class Map extends StatelessWidget {
-  MapView mapView = new MapView();
-
-  List<Marker> markers = <Marker>[
-    new Marker(
-      "Hall Of The Red Earl",
-      "Hall of the Red Earl",
-      53.2710,
-      -9.0537,
-    ),
-    new Marker("Lynch's Castle", "Lynch's Castle", 53.2722, -9.0533),
-    new Marker("st. nicholas' collegiate church",
-        "st. nicholas' collegiate church", 53.2727, -9.0539),
-    new Marker("Kings Head", "Kings Head", 53.2722, -9.0533),
-    new Marker("Eyre Square", "Eyre Square", 53.2747, -9.0500),
-  ];
-
-  displayMap() {
-    mapView.show(new MapOptions(
-      mapViewType: MapViewType.normal,
-      showUserLocation: true,
-      initialCameraPosition:
-          new CameraPosition(new Location(53.2707, -9.0568), 15.0),
-      title: "google map",
-    ));
-
-    mapView.onMapTapped.listen((tapped) {
-      mapView.setMarkers(markers);
-      mapView.zoomToFit(padding: 100);
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    mapView.show(new MapOptions(
-      mapViewType: MapViewType.normal,
-      showUserLocation: true,
-      initialCameraPosition:
-          new CameraPosition(new Location(53.2707, -9.0568), 15.0),
-      title: "google map",
-    ));
-    mapView.onMapTapped.listen((tapped) {
-      mapView.setMarkers(markers);
-      mapView.zoomToFit(padding: 100);
-    });
-    return new Scaffold(
-        appBar: new AppBar(
-          title: new Text("Hall Of the Red Earl"),
-        ),
-        body: new ListView(children: <Widget>[
-          displayMap(),
-        ]));
-  }
-}
-
-class _MyHallPageStateMore extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return new Scaffold(
-        appBar: new AppBar(
-          title: new Text("Hall Of the Red Earl"),
-        ),
-        body: new ListView(children: <Widget>[
-          new MyImageWidget(),
-          new Text("Hall Of The Red Earl",
-              style: TextStyle(fontStyle: FontStyle.italic, fontSize: 15.0)),
-          new Text("MESSAGE- long getting info from db",
-              style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20.0)),
-        ]));
-  }
-}
-
-class MyHallPage extends StatefulWidget {
-  @override
-  _MyHallPageState createState() => new _MyHallPageState();
-}
-
-class _MyHallPageState extends State<MyHallPage> {
-  //https://www.youtube.com/watch?v=sC9qhNPvW1M
-  int photoIndex = 0;
-
-  List<String> photos = ["images/explore.jpg", "images/kings.jpg"];
-
-  void _previousImage() {
-    setState(() {
-      photoIndex = photoIndex > 0 ? photoIndex - 1 : 0;
-    });
-  }
-
-  void _nextImage() {
-    setState(() {
-      photoIndex = photoIndex < photos.length - 1 ? photoIndex + 1 : photoIndex;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return new Scaffold(
-        appBar: new AppBar(
-          title: new Text("Hall Of the Red Earl"),
-        ),
-        body: new ListView(children: <Widget>[
-          Center(
-              child: Stack(children: <Widget>[
-            Container(
-              decoration: BoxDecoration(
-                image: DecorationImage(image: AssetImage(photos[photoIndex])),
-              ),
-              height: 250.0,
-              width: 600.0,
-            )
-          ])),
-          Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-            RaisedButton(child: Text('previous'), onPressed: _previousImage),
-            RaisedButton(child: Text('next'), onPressed: _nextImage),
-          ]),
-          new Text("Hall Of The Red Earl",
-              style: TextStyle(fontStyle: FontStyle.italic, fontSize: 15.0)),
-          new Text(
-              "As one of the oldest sites in the medieval town of Galway, the Hall of the Red Earl is associated with the De Burgo family who founded the town in the 13th century. Within its walls, banquets were hosted, taxes were collected and justice was dispensed.",
-              style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20.0)),
-          new RaisedButton(
-              child: Text('Hall Of The Red Earl'),
-              onPressed: () {
-                //Navigator.pushNamed(context, MyHallPage.routeName);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => _MyHallPageStateMore()),
-                );
-                //MaterialPageRoute(builder: (context) => ));
-              }),
-        ]));
   }
 }

@@ -2,4 +2,83 @@ import 'package:flutter/material.dart';
 import 'package:map_view/map_view.dart';
 import 'package:testing/widget.dart';
 
+class _MyHallPageStateMore extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+        appBar: new AppBar(
+          title: new Text("Hall Of the Red Earl"),
+        ),
+        body: new ListView(children: <Widget>[
+          new MyImageWidget(),
+          new Text("Hall Of The Red Earl",
+              style: TextStyle(fontStyle: FontStyle.italic, fontSize: 15.0)),
+          new Text("MESSAGE- long getting info from db",
+              style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20.0)),
+        ]));
+  }
+}
 
+class MyHallPage extends StatefulWidget {
+  @override
+  _MyHallPageState createState() => new _MyHallPageState();
+}
+
+class _MyHallPageState extends State<MyHallPage> {
+  //https://www.youtube.com/watch?v=sC9qhNPvW1M
+  int photoIndex = 0;
+
+  List<String> photos = ["images/explore.jpg", "images/kings.jpg"];
+
+  void _previousImage() {
+    setState(() {
+      photoIndex = photoIndex > 0 ? photoIndex - 1 : 0;
+    });
+  }
+
+  void _nextImage() {
+    setState(() {
+      photoIndex = photoIndex < photos.length - 1 ? photoIndex + 1 : photoIndex;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+        appBar: new AppBar(
+          title: new Text("Hall Of the Red Earl"),
+        ),
+        body: new ListView(children: <Widget>[
+          Center(
+              child: Stack(children: <Widget>[
+            Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(image: AssetImage(photos[photoIndex])),
+              ),
+              height: 250.0,
+              width: 600.0,
+            )
+          ])),
+          Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+            RaisedButton(child: Text('previous'), onPressed: _previousImage),
+            RaisedButton(child: Text('next'), onPressed: _nextImage),
+          ]),
+          new Text("Hall Of The Red Earl",
+              style: TextStyle(fontStyle: FontStyle.italic, fontSize: 15.0)),
+          new Text(
+              "As one of the oldest sites in the medieval town of Galway, the Hall of the Red Earl is associated with the De Burgo family who founded the town in the 13th century. Within its walls, banquets were hosted, taxes were collected and justice was dispensed.",
+              style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20.0)),
+          new RaisedButton(
+              child: Text('Hall Of The Red Earl'),
+              onPressed: () {
+                //Navigator.pushNamed(context, MyHallPage.routeName);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => _MyHallPageStateMore()),
+                );
+                //MaterialPageRoute(builder: (context) => ));
+              }),
+        ]));
+  }
+}
