@@ -204,6 +204,7 @@ final String url = "http://35.189.123.3/data?";
 
     print(data["title"]);
     print(data["description"]);
+    print(data["body"]);
 
    // List data; 
    // print(response.body);
@@ -226,7 +227,7 @@ final String url = "http://35.189.123.3/data?";
         itemBuilder: (BuildContext context , i){
           return new ListTile(
             title: Text(data['title']),  
-            subtitle: new Text(data['description']),
+            subtitle: new Text(data['body']),
           );
         }
         )
