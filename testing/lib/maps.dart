@@ -12,11 +12,12 @@ class Map extends StatelessWidget {
       53.2710,
       -9.0537,
     ),
-    new Marker("Lynch's Castle", "Lynch's Castle", 53.2722, -9.0533),
+    new Marker("Lynch's Castle", "Lynch's Castle", 53.2732, -9.0523),
     new Marker("st. nicholas' collegiate church",
         "st. nicholas' collegiate church", 53.2727, -9.0539),
     new Marker("Kings Head", "Kings Head", 53.2722, -9.0533),
     new Marker("Eyre Square", "Eyre Square", 53.2747, -9.0500),
+    new Marker("Medieval Walls", "Medieval Walls", 53.2738, -9.0507),
   ];
 
   displayMap() {

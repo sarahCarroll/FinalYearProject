@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:map_view/map_view.dart';
 import 'package:testing/widget.dart';
 import 'dart:async';
-import 'package:testing/maps.dart';
 import 'package:testing/hall.dart';
+import 'package:testing/kings.dart';
+import 'package:testing/lynchs.dart';
+import 'package:testing/nicholas.dart';
+import 'package:testing/brownes.dart';
+import 'package:testing/walls.dart';
 
 var myKey = "AIzaSyDzLAc2Uos2XNBT26mMJRqQ33aHoSnF0oM";
 
@@ -69,25 +73,10 @@ class _MySplashPageState extends State<MySplashPage> {
   }
 }
 
-// class MyHomePage extends StatefulWidget {
-//   MyHomePage({Key key, this.title}) : super(key: key);
-
-//   final String title;
-
-//   @override
-//   _MyHomePageState createState() => _MyHomePageState();
-// }
-
 class _MyHomePageState extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        // appBar: new AppBar(
-        //   // Here we take the value from the MyHomePage object that was created by
-        //   // the App.build method, and use it to set our appbar title.
-        //   title: new Text("widget.title"),
-        //   centerTitle: true,
-        // ),
         body: new ListView(children: <Widget>[
       new Text(
         "Medieval Tour",
@@ -114,7 +103,7 @@ class _MyHomePageState extends StatelessWidget {
             //Navigator.pushNamed(context, MyHallPage.routeName);
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => MyHallPage()),
+              MaterialPageRoute(builder: (context) => MyKingsPage()),
             );
             //MaterialPageRoute(builder: (context) => ));
           }),
@@ -126,7 +115,7 @@ class _MyHomePageState extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Map()),
+                MaterialPageRoute(builder: (context) => MyNicholasPage()),
               );
             }),
       ),
@@ -137,7 +126,7 @@ class _MyHomePageState extends StatelessWidget {
             //Navigator.pushNamed(context, MyHallPage.routeName);
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => MyHallPage()),
+              MaterialPageRoute(builder: (context) => MyLynchPage()),
             );
             //MaterialPageRoute(builder: (context) => ));
           }),
@@ -148,7 +137,7 @@ class _MyHomePageState extends StatelessWidget {
             //Navigator.pushNamed(context, MyHallPage.routeName);
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => MyHallPage()),
+              MaterialPageRoute(builder: (context) => MyBrownesPage()),
             );
             //MaterialPageRoute(builder: (context) => ));
           }),
@@ -159,7 +148,7 @@ class _MyHomePageState extends StatelessWidget {
             //Navigator.pushNamed(context, MyHallPage.routeName);
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => MyHallPage()),
+              MaterialPageRoute(builder: (context) => MyWallPage()),
             );
             //MaterialPageRoute(builder: (context) => ));
           }),

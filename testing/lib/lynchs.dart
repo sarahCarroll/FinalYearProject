@@ -2,33 +2,34 @@ import 'package:flutter/material.dart';
 import 'package:testing/widget.dart';
 import 'package:testing/maps.dart';
 
-class _MyHallPageStateMore extends StatelessWidget {
+class _MyLynchPageStateMore extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: new AppBar(
-          title: new Text("Hall Of the Red Earl"),
+          title: new Text("Lynchs Castle"),
         ),
         body: new ListView(children: <Widget>[
-          new MyImageWidget(),
-          new Text("Hall Of The Red Earl",
+          new MyLynchsWidget(),
+          new Text("Lynchs Castle",
               style: TextStyle(fontStyle: FontStyle.italic, fontSize: 15.0)),
-          new Text("MESSAGE- long getting info from db",
+          new Text(
+              "The castle is located on the junction of Shop Street and Upper Abbeygate Street and is thought to date to the late 15th or early 16th century. The stylish carvings and architectural features on the castle are symbols of the wealth and influence of the Lynch family. In fact, this family held the office of Mayor of Galway on 84 occasions between the granting of mayoral status to the town in 1484 and the arrival of conquering Cromwellian forces in 1652.",
               style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20.0)),
         ]));
   }
 }
 
-class MyHallPage extends StatefulWidget {
+class MyLynchPage extends StatefulWidget {
   @override
-  _MyHallPageState createState() => new _MyHallPageState();
+  _MyLynchsPageState createState() => new _MyLynchsPageState();
 }
 
-class _MyHallPageState extends State<MyHallPage> {
+class _MyLynchsPageState extends State<MyLynchPage> {
   //https://www.youtube.com/watch?v=sC9qhNPvW1M
   int photoIndex = 0;
 
-  List<String> photos = ["images/explore.jpg", "images/kings.jpg"];
+  List<String> photos = ["images/lynchs.jpg"];
 
   void _previousImage() {
     setState(() {
@@ -46,7 +47,7 @@ class _MyHallPageState extends State<MyHallPage> {
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: new AppBar(
-          title: new Text("Hall Of the Red Earl"),
+          title: new Text("Lynchs Castle"),
         ),
         body: new ListView(children: <Widget>[
           Center(
@@ -63,19 +64,19 @@ class _MyHallPageState extends State<MyHallPage> {
             RaisedButton(child: Text('previous'), onPressed: _previousImage),
             RaisedButton(child: Text('next'), onPressed: _nextImage),
           ]),
-          new Text("Hall Of The Red Earl",
+          new Text("Kings Head",
               style: TextStyle(fontStyle: FontStyle.italic, fontSize: 15.0)),
           new Text(
-              "As one of the oldest sites in the medieval town of Galway, the Hall of the Red Earl is associated with the De Burgo family who founded the town in the 13th century. Within its walls, banquets were hosted, taxes were collected and justice was dispensed.",
+              "Lynch’s Castle is the finest surviving example of an urban tower-house in Ireland and is the oldest building in continuing commercial use in Ireland. It was home to the most powerful of the Tribe families of Galway and is situated at the very centre of the old medieval town.",
               style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20.0)),
           new RaisedButton(
-              child: Text('Hall Of The Red Earl'),
+              child: Text('More Info'),
               onPressed: () {
                 //Navigator.pushNamed(context, MyHallPage.routeName);
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => _MyHallPageStateMore()),
+                      builder: (context) => _MyLynchPageStateMore()),
                 );
                 //MaterialPageRoute(builder: (context) => ));
               }),

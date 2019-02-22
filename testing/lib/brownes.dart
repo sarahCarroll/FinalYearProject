@@ -2,33 +2,33 @@ import 'package:flutter/material.dart';
 import 'package:testing/widget.dart';
 import 'package:testing/maps.dart';
 
-class _MyHallPageStateMore extends StatelessWidget {
+class _MyBrownesPageStateMore extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: new AppBar(
-          title: new Text("Hall Of the Red Earl"),
+          title: new Text("Brownes Doorway"),
         ),
         body: new ListView(children: <Widget>[
-          new MyImageWidget(),
-          new Text("Hall Of The Red Earl",
+          new MyBrownesWidget(),
+          new Text("Brownes Doorway",
               style: TextStyle(fontStyle: FontStyle.italic, fontSize: 15.0)),
-          new Text("MESSAGE- long getting info from db",
+          new Text("brownes doorway",
               style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20.0)),
         ]));
   }
 }
 
-class MyHallPage extends StatefulWidget {
+class MyBrownesPage extends StatefulWidget {
   @override
-  _MyHallPageState createState() => new _MyHallPageState();
+  _MyBrownesPageState createState() => new _MyBrownesPageState();
 }
 
-class _MyHallPageState extends State<MyHallPage> {
+class _MyBrownesPageState extends State<MyBrownesPage> {
   //https://www.youtube.com/watch?v=sC9qhNPvW1M
   int photoIndex = 0;
 
-  List<String> photos = ["images/explore.jpg", "images/kings.jpg"];
+  List<String> photos = ["images/brownes.jpg"];
 
   void _previousImage() {
     setState(() {
@@ -46,7 +46,7 @@ class _MyHallPageState extends State<MyHallPage> {
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: new AppBar(
-          title: new Text("Hall Of the Red Earl"),
+          title: new Text("Brownes Doorway"),
         ),
         body: new ListView(children: <Widget>[
           Center(
@@ -63,19 +63,18 @@ class _MyHallPageState extends State<MyHallPage> {
             RaisedButton(child: Text('previous'), onPressed: _previousImage),
             RaisedButton(child: Text('next'), onPressed: _nextImage),
           ]),
-          new Text("Hall Of The Red Earl",
+          new Text("Brownes Doorway",
               style: TextStyle(fontStyle: FontStyle.italic, fontSize: 15.0)),
-          new Text(
-              "As one of the oldest sites in the medieval town of Galway, the Hall of the Red Earl is associated with the De Burgo family who founded the town in the 13th century. Within its walls, banquets were hosted, taxes were collected and justice was dispensed.",
+          new Text("brownes doorway",
               style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20.0)),
           new RaisedButton(
-              child: Text('Hall Of The Red Earl'),
+              child: Text('More Info'),
               onPressed: () {
                 //Navigator.pushNamed(context, MyHallPage.routeName);
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => _MyHallPageStateMore()),
+                      builder: (context) => _MyBrownesPageStateMore()),
                 );
                 //MaterialPageRoute(builder: (context) => ));
               }),
