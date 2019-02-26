@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:map_view/map_view.dart';
 import 'package:testing/widget.dart';
+import 'dart:async';
+import 'package:testing/hall.dart';
+import 'package:testing/kings.dart';
+import 'package:testing/lynchs.dart';
+import 'package:testing/nicholas.dart';
+import 'package:testing/brownes.dart';
+import 'package:testing/walls.dart';
 
 var myKey = "AIzaSyDzLAc2Uos2XNBT26mMJRqQ33aHoSnF0oM";
 
@@ -18,51 +25,31 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.brown,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MySplashPage(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+class MySplashPage extends StatefulWidget {
+  MySplashPage({Key key, this.title}) : super(key: key);
 
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _MySplashPageState createState() => _MySplashPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  // MapView mapView = new MapView();
-
-  // List<Marker> markers = <Marker>[
-  //   new Marker(
-  //     "Hall Of The Red Earl",
-  //     "Hall of the Red Earl",
-  //     53.2710,
-  //     -9.0537,
-  //   ),
-  //   new Marker("Lynch's Castle", "Lynch's Castle", 53.2722, -9.0533),
-  //   new Marker("st. nicholas' collegiate church",
-  //       "st. nicholas' collegiate church", 53.2727, -9.0539),
-  //   new Marker("Kings Head", "Kings Head", 53.2722, -9.0533),
-  //   new Marker("Eyre Square", "Eyre Square", 53.2747, -9.0500),
-  // ];
-
-  // displayMap() {
-  //   mapView.show(new MapOptions(
-  //     mapViewType: MapViewType.normal,
-  //     showUserLocation: true,
-  //     initialCameraPosition:
-  //         new CameraPosition(new Location(53.2707, -9.0568), 15.0),
-  //     title: "google map",
-  //   ));
-
-  //   mapView.onMapTapped.listen((tapped) {
-  //     mapView.setMarkers(markers);
-  //     mapView.zoomToFit(padding: 100);
-  //   });
-  // }
+class _MySplashPageState extends State<MySplashPage> {
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Timer(
+        Duration(seconds: 5),
+        () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => _MyHomePageState()),
+            ));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -70,93 +57,101 @@ class _MyHomePageState extends State<MyHomePage> {
         appBar: new AppBar(
           // Here we take the value from the MyHomePage object that was created by
           // the App.build method, and use it to set our appbar title.
-          title: new Text(widget.title),
+          title: new Text(""),
           centerTitle: true,
         ),
         body: new ListView(children: <Widget>[
-          new MyImageWidget(),
-          new RaisedButton(
-              child: Text('Hall Of The Red Earl'),
-              onPressed: () {
-                //Navigator.pushNamed(context, MyHallPage.routeName);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => _MyHallPageState()),
-                );
-                //MaterialPageRoute(builder: (context) => ));
-              }),
-          new MyKingsWidget(),
-          new Container(
-            child: RaisedButton(
-                child: Text('Kings Head'),
-                elevation: 7.8,
-                onPressed: () {
-                  //Navigator.pushNamed(context, MyHallPage.routeName);
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Map()),
-                  );
-                }),
+          new Text(
+            "Medieval Walking Tour",
+            textAlign: TextAlign.center,
           ),
+          new Text(
+            "athors: Abigail Culkin and Sarah Carroll",
+            textAlign: TextAlign.center,
+          )
         ]));
   }
 }
 
-class _MyHallPageState extends StatelessWidget {
+class _MyHomePageState extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-        appBar: new AppBar(
-          title: new Text("Hall Of the Red Earl"),
-        ),
+    return Scaffold(
         body: new ListView(children: <Widget>[
-          new MyImageWidget(),
-          new Text("Hall Of The Red Earl",
-              style: TextStyle(fontStyle: FontStyle.italic, fontSize: 15.0)),
-          new Text("This is all the information about the hall of the red earl",
-              style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20.0)),
-        ]));
-  }
-}
-
-class Map extends StatelessWidget {
-  MapView mapView = new MapView();
-
-  List<Marker> markers = <Marker>[
-    new Marker(
-      "Hall Of The Red Earl",
-      "Hall of the Red Earl",
-      53.2710,
-      -9.0537,
-    ),
-    new Marker("Lynch's Castle", "Lynch's Castle", 53.2722, -9.0533),
-    new Marker("st. nicholas' collegiate church",
-        "st. nicholas' collegiate church", 53.2727, -9.0539),
-    new Marker("Kings Head", "Kings Head", 53.2722, -9.0533),
-    new Marker("Eyre Square", "Eyre Square", 53.2747, -9.0500),
-  ];
-
-  displayMap() {
-    mapView.show(new MapOptions(
-      mapViewType: MapViewType.normal,
-      showUserLocation: true,
-      initialCameraPosition:
-          new CameraPosition(new Location(53.2707, -9.0568), 15.0),
-      title: "google map",
-    ));
-
-    mapView.onMapTapped.listen((tapped) {
-      mapView.setMarkers(markers);
-      mapView.zoomToFit(padding: 100);
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return new Scaffold(
-        appBar: new AppBar(
-          title: new Text("Google Maps"),
+      new Text(
+        "Medieval Tour",
+        textAlign: TextAlign.center,
+        style: new TextStyle(
+          fontSize: 30.0,
         ),
-        body: displayMap());
+      ),
+      new MyImageWidget(),
+      new RaisedButton(
+          child: Text('Hall Of the Red Earl '),
+          onPressed: () {
+            //Navigator.pushNamed(context, MyHallPage.routeName);
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => MyHallPage()),
+            );
+            //MaterialPageRoute(builder: (context) => ));
+          }),
+      new MyKingsWidget(),
+      new RaisedButton(
+          child: Text('Kings Head'),
+          onPressed: () {
+            //Navigator.pushNamed(context, MyHallPage.routeName);
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => MyKingsPage()),
+            );
+            //MaterialPageRoute(builder: (context) => ));
+          }),
+      new MyNicholasWidget(),
+      new Container(
+        child: RaisedButton(
+            child: Text('St.Nicholas Church'),
+            elevation: 7.8,
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => MyNicholasPage()),
+              );
+            }),
+      ),
+      new MyLynchsWidget(),
+      new RaisedButton(
+          child: Text('Lynchs Castle'),
+          onPressed: () {
+            //Navigator.pushNamed(context, MyHallPage.routeName);
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => MyLynchPage()),
+            );
+            //MaterialPageRoute(builder: (context) => ));
+          }),
+      new MyBrownesWidget(),
+      new RaisedButton(
+          child: Text('Brownes Doorway'),
+          onPressed: () {
+            //Navigator.pushNamed(context, MyHallPage.routeName);
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => MyBrownesPage()),
+            );
+            //MaterialPageRoute(builder: (context) => ));
+          }),
+      new MyWallWidget(),
+      new RaisedButton(
+          child: Text('Medieval Walls'),
+          onPressed: () {
+            //Navigator.pushNamed(context, MyHallPage.routeName);
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => MyWallPage()),
+            );
+            //MaterialPageRoute(builder: (context) => ));
+          }),
+    ]));
   }
 }
