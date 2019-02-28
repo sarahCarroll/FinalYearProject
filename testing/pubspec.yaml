@@ -7,7 +7,7 @@ description: A new Flutter project.
 # Both the version and the builder number may be overridden in flutter
 # build by specifying --build-name and --build-number, respectively.
 # Read more about versioning at semver.org.
-version: 1.0.0+1
+version: 0.9.4+1
 
 environment:
   sdk: ">=2.0.0-dev.68.0 <3.0.0"
@@ -23,7 +23,12 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+ 
+  
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  # cupertino_icons: ^0.1.2
+  
 
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec
@@ -44,6 +49,10 @@ flutter:
   assets:
    - images/explore.jpg
    - images/kings.jpg
+   - images/nicholas.jpg
+   - images/lynchs.jpg
+   - images/brownes.jpg
+   - images/walls.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
