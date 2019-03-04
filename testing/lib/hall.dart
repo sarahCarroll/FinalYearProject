@@ -44,15 +44,14 @@ class _MyHallPageState extends State<MyHallPage> {
         //encode the url
         Uri.encodeFull(url),
         //only accept json response
-        headers: {"Accept": "application/json"});
+        headers: {"Content-Type": "application/json"});
 
     //print(response.body);
 
     //loads when app page for displaying data is
-    setState(() {
+    
        data = json.decode(response.body);
-    });
-
+    
     print(data["title"]);
     //print(data["description"]);
    // print(data["body"]);
@@ -80,7 +79,7 @@ class _MyHallPageState extends State<MyHallPage> {
       photoIndex = photoIndex < photos.length - 1 ? photoIndex + 1 : photoIndex;
     });
   }
-
+final int count =1;
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -104,7 +103,7 @@ class _MyHallPageState extends State<MyHallPage> {
           //   RaisedButton(child: Text('next'), onPressed: _nextImage),
           // ]),
           new ListView.builder(
-        itemCount: data == null? 0: data.length,
+        itemCount: 1,
         itemBuilder: (BuildContext context , i){
           return new Container(
             child: Center(
