@@ -31,8 +31,8 @@ class MyHallPage extends StatefulWidget {
 
 class _MyHallPageState extends State<MyHallPage> {
   final String url = "http://35.189.123.3/data?";
-  //List data;
-  var data;
+ // List data;
+  Map<String, dynamic>  data;
   @override
   void initState() {
     super.initState();
@@ -54,8 +54,8 @@ class _MyHallPageState extends State<MyHallPage> {
     });
 
     print(data["title"]);
-    print(data["description"]);
-    print(data["body"]);
+    //print(data["description"]);
+   // print(data["body"]);
 
     // List data;
     // print(response.body);
@@ -83,41 +83,69 @@ class _MyHallPageState extends State<MyHallPage> {
 
   @override
   Widget build(BuildContext context) {
-   ' $data["title"]';
     return new Scaffold(
         appBar: new AppBar(
-          title: new Text("hi"),
-        ),
-        body: ListView(children: <Widget>[
-          Center(
-              child: Stack(children: <Widget>[
-            Container(
-              decoration: BoxDecoration(
-                image: DecorationImage(image: AssetImage(photos[photoIndex])),
-              ),
-              height: 250.0,
-              width: 600.0,
-            )
-          ])),
-          Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-            RaisedButton(child: Text('previous'), onPressed: _previousImage),
-            RaisedButton(child: Text('next'), onPressed: _nextImage),
-          ]),
-        //  new ListView.builder(
-        // itemCount: data == null? 0: data.length,
-        // itemBuilder: (BuildContext context , i){
-        //   return new ListTile(
-        //     title: Text(data['title']),  
-        //     subtitle: new Text(data['body']),
-        //   );
-        // }
-        // ),
-          new Text(data["title"],
-              style: TextStyle(fontStyle: FontStyle.italic, fontSize: 15.0)),
-          new Text(
-              "As one of the oldest sites in the medieval town of Galway, the Hall of the Red Earl is associated with the De Burgo family who founded the town in the 13th century. Within its walls, banquets were hosted, taxes were collected and justice was dispensed.",
-              style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20.0)),
-          new RaisedButton(
+          //data['title'] !=null? 
+          title: new Text("Hall"), 
+             ),
+        body: 
+          // Center(
+          //     child: Stack(children: <Widget>[
+          //   Container(
+          //     decoration: BoxDecoration(
+          //       image: DecorationImage(image: AssetImage(photos[photoIndex])),
+          //     ),
+          //     height: 250.0,
+          //     width: 600.0,
+          //   )
+          // ])),
+          // Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+          //   RaisedButton(child: Text('previous'), onPressed: _previousImage),
+          //   RaisedButton(child: Text('next'), onPressed: _nextImage),
+          // ]),
+          new ListView.builder(
+        itemCount: data == null? 0: data.length,
+        itemBuilder: (BuildContext context , i){
+          return new Container(
+            child: Center(
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: <Widget>[
+                     Container(
+                        decoration: BoxDecoration(
+                          image: DecorationImage(image: AssetImage(photos[photoIndex])),
+                        ),
+                        height: 250.0,
+                        width: 600.0,
+                      ),
+                       Row(crossAxisAlignment: CrossAxisAlignment.center, children: <Widget>[
+                    RaisedButton(child: Text('previous'), onPressed: _previousImage),
+                    RaisedButton(child: Text('next'), onPressed: _nextImage),
+                    ]),
+                    Card(
+                      child:Container(
+                        child: Text(data['title'] ,
+                          style:
+                          TextStyle(fontSize: 18.0,
+                            color: Colors.black54
+                          )),
+                      )
+                    ),
+              
+                     
+                 
+            // title: Text(data['title']),  
+            // subtitle: new Text(data['body']),
+               
+        
+         
+          // new Text(data['title'],
+          //     style: TextStyle(fontStyle: FontStyle.italic, fontSize: 15.0)),
+        
+          //  new Text(
+          //     "As one of the oldest sites in the medieval town of Galway, the Hall of the Red Earl is associated with the De Burgo family who founded the town in the 13th century. Within its walls, banquets were hosted, taxes were collected and justice was dispensed.",
+          //     style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20.0)),
+           new RaisedButton(
               child: Text('More info'),
               onPressed: () {
                 //Navigator.pushNamed(context, MyHallPage.routeName);
@@ -136,8 +164,11 @@ class _MyHallPageState extends State<MyHallPage> {
                   context,
                   MaterialPageRoute(builder: (context) => Map1()),
                 );
-                //MaterialPageRoute(builder: (context) => ));
-              }),
-        ]));
-  }
-}
+               }),
+                //MaterialPageRoute(builder: (context) => ))
+                ]), 
+          
+           ), );
+        }));
+              }
+           }
