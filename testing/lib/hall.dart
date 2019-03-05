@@ -8,6 +8,7 @@ import 'dart:convert';
 
 
 class _MyHallPageStateMore extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -33,14 +34,11 @@ class _MyHallPageState extends State<MyHallPage> {
   final String url = "http://35.189.123.3/data?";
  // List data;
   Map<String, dynamic>  data;
-  @override
-  void initState() {
-    super.initState();
-    this.getJsonData();
-  }
-
+  //var data;
+  
+  
   Future<String> getJsonData() async {
-    var response = await http.get(
+    final response = await http.get(
         //encode the url
         Uri.encodeFull(url),
         //only accept json response
@@ -48,11 +46,13 @@ class _MyHallPageState extends State<MyHallPage> {
 
     //print(response.body);
 
-    //loads when app page for displaying data is
-    
+  setState(() {
        data = json.decode(response.body);
-    
-    print(data["title"]);
+       assert(data != null);
+    });
+
+
+    print(data['title']);
     //print(data["description"]);
    // print(data["body"]);
 
@@ -60,9 +60,16 @@ class _MyHallPageState extends State<MyHallPage> {
     // print(response.body);
     //print(data[0]["title"]);
 
-    return "Success";
+    return "data";
   }
 
+  @override
+  void initState() {
+    super.initState();
+    getJsonData();
+   // print(data);
+
+  }
   //https://www.youtube.com/watch?v=sC9qhNPvW1M
   int photoIndex = 0;
 
@@ -80,33 +87,32 @@ class _MyHallPageState extends State<MyHallPage> {
     });
   }
 final int count =1;
+
+
   @override
   Widget build(BuildContext context) {
+   // getJsonData();
     return new Scaffold(
         appBar: new AppBar(
-          //data['title'] !=null? 
           title: new Text("Hall"), 
              ),
+             
         body: 
-          // Center(
-          //     child: Stack(children: <Widget>[
-          //   Container(
-          //     decoration: BoxDecoration(
-          //       image: DecorationImage(image: AssetImage(photos[photoIndex])),
-          //     ),
-          //     height: 250.0,
-          //     width: 600.0,
-          //   )
-          // ])),
-          // Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-          //   RaisedButton(child: Text('previous'), onPressed: _previousImage),
-          //   RaisedButton(child: Text('next'), onPressed: _nextImage),
-          // ]),
           new ListView.builder(
-        itemCount: 1,
+             
+        itemCount: data == null? 0: 1 ,
         itemBuilder: (BuildContext context , i){
-          return new Container(
-            child: Center(
+        // FutureBuilder<String>(
+        //   future: getJsonData(),
+        //   builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
+        //       if (snapshot.hasData) {
+        //           print('itemNo in FutureBuilder: ${snapshot.data}');
+        //           return Text('Hello');
+        //        } 
+        //    },
+        //        );
+           return new Container(
+             child: Center(
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: <Widget>[
