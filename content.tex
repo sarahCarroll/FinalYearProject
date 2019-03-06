@@ -85,7 +85,10 @@ A widget test tests a single widget. Testing a widget involves multiple classes 
 
 \subsection{Integration Testing}
 
-Integration testing is used to test the flutter application in whole. This tests that each function checked in unit and widget tests also work when Incorporated with the remainder of the application. Integration testing is also used to test the performance of the application. This was done to test that the application could retrieve information from the database by many users simultaneously. Developers/testers can run the command "flutter driver" which sets uo the test harness, builds and installs the application and runs the integration tests on the application. \cite{IntegrationTest}
+Integration testing is used to test the flutter application in whole. This tests that each function checked in unit and widget tests also work when Incorporated with the remainder of the application. Integration testing is also used to test the performance of the application. This was done to test that the application could retrieve information from the database by many users simultaneously. Developers/testers can run the command "flutter driver" which sets up the test harness, builds and installs the application and runs the integration tests on the application. \cite{IntegrationTest}
+
+\subsection{Fuzz Testing}
+In order to carry out tests on the web application and mongo database, fuzz testing is used. This means testing the architecture by giving it a large variety of inputs. The web application updated, creates and deletes inputs from the mongo db. The input size is limited and this limit is tested to the max though fuzz tests, along with invalid inputs such as no input and numeric input alone. This testing is to be completed after the basic level of testing.
 
 \begin{figure}[ht!]
     \centering
@@ -109,15 +112,35 @@ Behaviour driven development is another agile software development methodology. 
 
 \subsection{Test Driven Development}
 
-Test Driven Development is based predominantly on unit testing. However they are very different because test driven development is when the unit tests are written before the code has been created. This means the developers are using the unit tests as a guild and the tests alone break down the overall task needing to be completed.The tests will initally fail and the developers write minimal code in order the the tests to pasS. This is process in continuously repeated in order for the application to pass each test. These tests are commonly automated.\cite{TDD}
+Test Driven Development is based predominantly on unit testing. However they are very different because test driven development is when the unit tests are written before the code has been created. This means the developers are using the unit tests as a guild and the tests alone break down the overall task needing to be completed.The tests will initially fail and the developers write minimal code in order the the tests to pass. This is process in continuously repeated in order for the application to pass each test. These tests are commonly automated.\cite{TDD}
 
 \section{Project Management}
 
-Project Management is a key element of any task to ensure that the project was laid out correctly and each component part is complete at a given date etc. Because this project was completed by a team it was important both members completed each task. In order to track the project a gantt chart was user. This broke down each step of the project and the expected time limits for each section.
+Project Management is a key element of any task to ensure that the project was laid out correctly and each component part is complete at a given date etc. Because this project was completed by a team it was important both members completed each task. In order to track the project a gantt chart was used. This broke down each step of the project and the expected time limits for each section.
 
+\subsection{Agile}
 
+The project used Agile project management methodologies.An iterative approach was taken. This meant that each week certain tasks are completed. The project team meet 3 times a week to discuss what has been completed since the last meeting, what has to be completed before the next and discuss any  difficulties experienced thought out the duration. The meetings are short and concise. Once a week the team met their mentor and explained what was completed since the last meeting and is to be done before the next. These weekly meetings were the iterative approach. Each week the process would be repeated to meet, plan, design, develop, test and evaluate.
 
+\begin{figure}[ht!]
+    \centering
+ \includegraphics[width=75mm, height=75mm,scale=0.5]{img/agile.jpg}
+\caption{Agile Life Cycle}
+\label{fig:agile}
+\end{figure}
 
+\subsubsection{Breakdown of agile}
+During the meeting and planning phase. The milestones for the project were identified and broken down into simpler, more manageable tasks. The tasks are then grouped into sprints lasting one week each. These are the tasks to be complete before each meeting. Each sprint started after the weekly meeting with the supervisor and terminated before the next weeks meeting. After each sprint before the meeting phase a review was carried out on the tasks completed in the last sprint. If there were changed to make these were completed in the next sprint. Testing is completed after every 2/3 weeks in the form of unit tests and widget tests.\cite{Agile}
+
+\begin{figure}[ht]
+    \centering
+ \includegraphics[width=135mm, height=50mm,scale=0.5]{img/plan.png}
+\caption{Agile Life Cycle}
+\label{fig:Project Plan}
+\end{figure}
+
+\subsection{Managing Project}
+In order to manage this project GitHub was used. This was very useful due to it being a team project. It enables both members of the team to work on separate individual branches. After each iteration these branches were merged int the master branch. After each integration the project was at a working state of the project. This could be used for industry standard as continuous delivery. For this project is ment that after each sprint there was a working version to present to customer and supervisor. Although it is a working version is may still need changes in the next sprint.At the beginning of each sprint all branches pull from the master so as every team member is working of the same code.
 
 
 

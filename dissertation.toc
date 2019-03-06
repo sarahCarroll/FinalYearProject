@@ -11,8 +11,12 @@
 \contentsline {subsection}{\numberline {2.2.1}Unit Tests}{9}{subsection.2.2.1}% 
 \contentsline {subsection}{\numberline {2.2.2}Widget Testing}{9}{subsection.2.2.2}% 
 \contentsline {subsection}{\numberline {2.2.3}Integration Testing}{9}{subsection.2.2.3}% 
+\contentsline {subsection}{\numberline {2.2.4}Fuzz Testing}{9}{subsection.2.2.4}% 
 \contentsline {section}{\numberline {2.3}Continuous Integration / Continuous Delivery}{10}{section.2.3}% 
 \contentsline {subsection}{\numberline {2.3.1}Storyboards}{10}{subsection.2.3.1}% 
-\contentsline {subsection}{\numberline {2.3.2}Behaviour Driven Development}{10}{subsection.2.3.2}% 
+\contentsline {subsection}{\numberline {2.3.2}Behaviour Driven Development}{11}{subsection.2.3.2}% 
 \contentsline {subsection}{\numberline {2.3.3}Test Driven Development}{11}{subsection.2.3.3}% 
 \contentsline {section}{\numberline {2.4}Project Management}{11}{section.2.4}% 
+\contentsline {subsection}{\numberline {2.4.1}Agile}{11}{subsection.2.4.1}% 
+\contentsline {subsubsection}{Breakdown of agile}{12}{section*.8}% 
+\contentsline {subsection}{\numberline {2.4.2}Managing Project}{13}{subsection.2.4.2}% 
