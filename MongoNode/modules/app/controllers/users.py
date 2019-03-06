@@ -19,7 +19,3 @@ def user():
 
     data = request.get_json()
 
-@app.route('/', methods=['Patch')
-def index():
-     db.info.update({'_id' : ObjectId("5c62f1b168b454424c0d8e15")}, {"body": "Hall.txt", "title": "Hall of the Red Earl", "description": "Info about hall", "filename":"explore.jpg", "size 25"})
-    return jsonify(data), 200
