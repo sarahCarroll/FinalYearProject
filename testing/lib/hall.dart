@@ -5,20 +5,70 @@ import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
 
-class _MyHallPageStateMore extends StatelessWidget {
+
+class MyHallPageUrl extends StatefulWidget {
+  @override
+  _MyHallPageStateMore createState() => new _MyHallPageStateMore();
+}
+class _MyHallPageStateMore extends State<MyHallPageUrl> {
+final String url = "http://35.189.123.3/data?";
+
+  Map<String, dynamic> data;
+
+  Future<String> getJsonData() async {
+    final response = await http.get(
+        //encode the url
+        Uri.encodeFull(url),
+        //only accept json response
+        headers: {"Content-Type": "application/json"});
+
+    setState(() {
+      data = json.decode(response.body);
+      assert(data != null);
+    });
+
+    print(data['body']);
+    return "data";
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getJsonData();
+    // print(data);
+  }
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: new AppBar(
           title: new Text("Hall Of the Red Earl"),
         ),
-        body: new ListView(children: <Widget>[
-          new MyImageWidget(),
-          new Text("Hall Of The Red Earl",
-              style: TextStyle(fontStyle: FontStyle.italic, fontSize: 15.0)),
-          new Text("MESSAGE- long getting info from db",
-              style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20.0)),
-        ]));
+         body: new ListView.builder(
+            itemCount: data == null ? 0 : 1,
+            itemBuilder: (BuildContext context, i) {
+              return new Container(
+                child: Center(
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: <Widget>[
+                        Card(
+                            child: Container(
+                          child: Text(data['body'],
+                              style: TextStyle(
+                                  fontSize: 18.0, color: Colors.black54)),
+                        )),
+                  ]),
+                ),
+              );
+            }));
+        // body: new ListView(children: <Widget>[
+        //   new MyImageWidget(),
+        //   new Text("Hall Of The Red Earl",
+        //       style: TextStyle(fontStyle: FontStyle.italic, fontSize: 15.0)),
+        //   new Text("MESSAGE- long getting info from db",
+        //       style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20.0)),
+        // ]));
   }
 }
 
@@ -91,7 +141,6 @@ class _MyHallPageState extends State<MyHallPage> {
 
   @override
   Widget build(BuildContext context) {
-    // getJsonData();
     return new Scaffold(
         appBar: new AppBar(
           title: new Text("Hall"),
@@ -99,15 +148,6 @@ class _MyHallPageState extends State<MyHallPage> {
         body: new ListView.builder(
             itemCount: data == null ? 0 : 1,
             itemBuilder: (BuildContext context, i) {
-              // FutureBuilder<String>(
-              //   future: getJsonData(),
-              //   builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
-              //       if (snapshot.hasData) {
-              //           print('itemNo in FutureBuilder: ${snapshot.data}');
-              //           return Text('Hello');
-              //        }
-              //    },
-              //        );
               return new Container(
                 child: Center(
                   child: Column(
@@ -122,7 +162,7 @@ class _MyHallPageState extends State<MyHallPage> {
                           width: 600.0,
                         ),
                         Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               RaisedButton(
                                   child: Text('previous'),
@@ -137,12 +177,6 @@ class _MyHallPageState extends State<MyHallPage> {
                                   fontSize: 18.0, color: Colors.black54)),
                         )),
 
-                        // title: Text(data['title']),
-                        // subtitle: new Text(data['body']),
-
-                        // new Text(data['title'],
-                        //     style: TextStyle(fontStyle: FontStyle.italic, fontSize: 15.0)),
-
                         //  new Text(
                         //     "As one of the oldest sites in the medieval town of Galway, the Hall of the Red Earl is associated with the De Burgo family who founded the town in the 13th century. Within its walls, banquets were hosted, taxes were collected and justice was dispensed.",
                         //     style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20.0)),
@@ -154,7 +188,7 @@ class _MyHallPageState extends State<MyHallPage> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        _MyHallPageStateMore()),
+                                        MyHallPageUrl()),
                               );
                               //MaterialPageRoute(builder: (context) => ));
                             }),
