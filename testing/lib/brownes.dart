@@ -28,7 +28,12 @@ class _MyBrownesPageState extends State<MyBrownesPage> {
   //https://www.youtube.com/watch?v=sC9qhNPvW1M
   int photoIndex = 0;
 
-  List<String> photos = ["images/brownes.jpg"];
+  List<String> photos = [
+      "images/brownes/browne(1).jpg",
+      "images/brownes/browne(2).jpg",
+      "images/brownes/browne(3).jpg",
+      "images/brownes/browne(4).JPG"
+  ];
 
   void _previousImage() {
     setState(() {

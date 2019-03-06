@@ -28,7 +28,11 @@ class _MyWallsPageState extends State<MyWallPage> {
   //https://www.youtube.com/watch?v=sC9qhNPvW1M
   int photoIndex = 0;
 
-  List<String> photos = ["images/walls.jpg"];
+  List<String> photos = [
+      "images/walls/walls(1).JPG",
+      "images/walls/walls(2).jpg",
+      "images/walls/walls(3).JPG"
+  ];
 
   void _previousImage() {
     setState(() {

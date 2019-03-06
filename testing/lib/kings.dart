@@ -29,7 +29,11 @@ class _MyKingsPageState extends State<MyKingsPage> {
   //https://www.youtube.com/watch?v=sC9qhNPvW1M
   int photoIndex = 0;
 
-  List<String> photos = ["images/kings.jpg", "images/lynchs.jpg"];
+  List<String> photos = [
+      "images/kings/King(1).JPG",
+      "images/kings/King(2).jpg",
+      "images/kings/King(3).gif"
+  ];
 
   void _previousImage() {
     setState(() {

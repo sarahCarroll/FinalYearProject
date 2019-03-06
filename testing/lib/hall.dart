@@ -5,10 +5,7 @@ import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
 
-
-
 class _MyHallPageStateMore extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -32,11 +29,10 @@ class MyHallPage extends StatefulWidget {
 
 class _MyHallPageState extends State<MyHallPage> {
   final String url = "http://35.189.123.3/data?";
- // List data;
-  Map<String, dynamic>  data;
+  // List data;
+  Map<String, dynamic> data;
   //var data;
-  
-  
+
   Future<String> getJsonData() async {
     final response = await http.get(
         //encode the url
@@ -46,15 +42,14 @@ class _MyHallPageState extends State<MyHallPage> {
 
     //print(response.body);
 
-  setState(() {
-       data = json.decode(response.body);
-       assert(data != null);
+    setState(() {
+      data = json.decode(response.body);
+      assert(data != null);
     });
-
 
     print(data['title']);
     //print(data["description"]);
-   // print(data["body"]);
+    // print(data["body"]);
 
     // List data;
     // print(response.body);
@@ -67,13 +62,18 @@ class _MyHallPageState extends State<MyHallPage> {
   void initState() {
     super.initState();
     getJsonData();
-   // print(data);
-
+    // print(data);
   }
+
   //https://www.youtube.com/watch?v=sC9qhNPvW1M
   int photoIndex = 0;
 
-  List<String> photos = ["images/explore.jpg", "images/kings.jpg"];
+  List<String> photos = [
+    "images/Hall/Hall(1).JPG",
+    "images/Hall/Hall(2).JPG",
+    "images/Hall/Hall(3).png",
+    "images/Hall/Hall(4).png"
+  ];
 
   void _previousImage() {
     setState(() {
@@ -86,94 +86,91 @@ class _MyHallPageState extends State<MyHallPage> {
       photoIndex = photoIndex < photos.length - 1 ? photoIndex + 1 : photoIndex;
     });
   }
-final int count =1;
 
+  final int count = 1;
 
   @override
   Widget build(BuildContext context) {
-   // getJsonData();
+    // getJsonData();
     return new Scaffold(
         appBar: new AppBar(
-          title: new Text("Hall"), 
-             ),
-             
-        body: 
-          new ListView.builder(
-             
-        itemCount: data == null? 0: 1 ,
-        itemBuilder: (BuildContext context , i){
-        // FutureBuilder<String>(
-        //   future: getJsonData(),
-        //   builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
-        //       if (snapshot.hasData) {
-        //           print('itemNo in FutureBuilder: ${snapshot.data}');
-        //           return Text('Hello');
-        //        } 
-        //    },
-        //        );
-           return new Container(
-             child: Center(
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: <Widget>[
-                     Container(
-                        decoration: BoxDecoration(
-                          image: DecorationImage(image: AssetImage(photos[photoIndex])),
+          title: new Text("Hall"),
+        ),
+        body: new ListView.builder(
+            itemCount: data == null ? 0 : 1,
+            itemBuilder: (BuildContext context, i) {
+              // FutureBuilder<String>(
+              //   future: getJsonData(),
+              //   builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
+              //       if (snapshot.hasData) {
+              //           print('itemNo in FutureBuilder: ${snapshot.data}');
+              //           return Text('Hello');
+              //        }
+              //    },
+              //        );
+              return new Container(
+                child: Center(
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: <Widget>[
+                        Container(
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage(photos[photoIndex])),
+                          ),
+                          height: 250.0,
+                          width: 600.0,
                         ),
-                        height: 250.0,
-                        width: 600.0,
-                      ),
-                       Row(crossAxisAlignment: CrossAxisAlignment.center, children: <Widget>[
-                    RaisedButton(child: Text('previous'), onPressed: _previousImage),
-                    RaisedButton(child: Text('next'), onPressed: _nextImage),
-                    ]),
-                    Card(
-                      child:Container(
-                        child: Text(data['title'] ,
-                          style:
-                          TextStyle(fontSize: 18.0,
-                            color: Colors.black54
-                          )),
-                      )
-                    ),
-              
-                     
-                 
-            // title: Text(data['title']),  
-            // subtitle: new Text(data['body']),
-               
-        
-         
-          // new Text(data['title'],
-          //     style: TextStyle(fontStyle: FontStyle.italic, fontSize: 15.0)),
-        
-          //  new Text(
-          //     "As one of the oldest sites in the medieval town of Galway, the Hall of the Red Earl is associated with the De Burgo family who founded the town in the 13th century. Within its walls, banquets were hosted, taxes were collected and justice was dispensed.",
-          //     style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20.0)),
-           new RaisedButton(
-              child: Text('More info'),
-              onPressed: () {
-                //Navigator.pushNamed(context, MyHallPage.routeName);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => _MyHallPageStateMore()),
-                );
-                //MaterialPageRoute(builder: (context) => ));
-              }),
-          new RaisedButton(
-              child: Text('Location'),
-              onPressed: () {
-                //Navigator.pushNamed(context, MyHallPage.routeName);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Map1()),
-                );
-               }),
-                //MaterialPageRoute(builder: (context) => ))
-                ]), 
-          
-           ), );
-        }));
-              }
-           }
+                        Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              RaisedButton(
+                                  child: Text('previous'),
+                                  onPressed: _previousImage),
+                              RaisedButton(
+                                  child: Text('next'), onPressed: _nextImage),
+                            ]),
+                        Card(
+                            child: Container(
+                          child: Text(data['title'],
+                              style: TextStyle(
+                                  fontSize: 18.0, color: Colors.black54)),
+                        )),
+
+                        // title: Text(data['title']),
+                        // subtitle: new Text(data['body']),
+
+                        // new Text(data['title'],
+                        //     style: TextStyle(fontStyle: FontStyle.italic, fontSize: 15.0)),
+
+                        //  new Text(
+                        //     "As one of the oldest sites in the medieval town of Galway, the Hall of the Red Earl is associated with the De Burgo family who founded the town in the 13th century. Within its walls, banquets were hosted, taxes were collected and justice was dispensed.",
+                        //     style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20.0)),
+                        new RaisedButton(
+                            child: Text('More info'),
+                            onPressed: () {
+                              //Navigator.pushNamed(context, MyHallPage.routeName);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        _MyHallPageStateMore()),
+                              );
+                              //MaterialPageRoute(builder: (context) => ));
+                            }),
+                        new RaisedButton(
+                            child: Text('Location'),
+                            onPressed: () {
+                              //Navigator.pushNamed(context, MyHallPage.routeName);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => Map1()),
+                              );
+                            }),
+                        //MaterialPageRoute(builder: (context) => ))
+                      ]),
+                ),
+              );
+            }));
+  }
+}

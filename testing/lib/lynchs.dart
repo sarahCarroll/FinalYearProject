@@ -29,8 +29,12 @@ class _MyLynchsPageState extends State<MyLynchPage> {
   //https://www.youtube.com/watch?v=sC9qhNPvW1M
   int photoIndex = 0;
 
-  List<String> photos = ["images/lynchs.jpg"];
-
+  List<String> photos = [
+      "images/lynch's/lynchs(1).jpg",
+      "images/lynch's/lynchs(2).jpg",
+      "images/lynch's/lynchs(3).jpg"
+  ];
+  
   void _previousImage() {
     setState(() {
       photoIndex = photoIndex > 0 ? photoIndex - 1 : 0;
