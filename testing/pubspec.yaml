@@ -7,7 +7,7 @@ description: A new Flutter project.
 # Both the version and the builder number may be overridden in flutter
 # build by specifying --build-name and --build-number, respectively.
 # Read more about versioning at semver.org.
-version: 1.0.0+1
+version: 0.9.4+1
 
 environment:
   sdk: ">=2.0.0-dev.68.0 <3.0.0"
@@ -15,6 +15,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
+  redux: "^3.0.0"
+  flutter_redux: "0.5.0"
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
@@ -23,7 +26,12 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+ 
+  
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  # cupertino_icons: ^0.1.2
+  
 
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec
@@ -42,8 +50,44 @@ flutter:
   #  - images/a_dot_ham.jpeg
 
   assets:
+  
+   - images/Hall/Hall(1).JPG
+   - images/Hall/Hall(2).JPG
+   - images/Hall/Hall(3).png
+   - images/Hall/Hall(4).png
+
+   
+   - images/kings/King(1).JPG
+   - images/kings/King(2).jpg
+   - images/kings/King(3).gif
+  
+   
+   - images/nicks/Nicks(1).jpg
+   - images/nicks/Nicks(2).jpg
+   - images/nicks/Nicks(3).JPG
+   - images/nicks/Nicks(4).jpg
+  
+  
+   - images/lynch's/lynchs(1).jpg
+   - images/lynch's/lynchs(2).jpg
+   - images/lynch's/lynchs(3).jpg
+
+   
+   - images/brownes/browne(1).jpg
+   - images/brownes/browne(2).jpg
+   - images/brownes/browne(3).jpg
+   - images/brownes/browne(4).JPG
+  
+   
+   - images/walls/walls(1).JPG
+   - images/walls/walls(2).jpg
+   - images/walls/walls(3).JPG
    - images/explore.jpg
    - images/kings.jpg
+   - images/nicholas.jpg
+   - images/lynchs.jpg
+   - images/brownes.jpg
+   - images/walls.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.

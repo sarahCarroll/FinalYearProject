@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:map_view/map_view.dart';
 import 'package:testing/widget.dart';
 import 'dart:async';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
-
+import 'package:testing/hall.dart';
+import 'package:testing/kings.dart';
+import 'package:testing/lynchs.dart';
+import 'package:testing/nicholas.dart';
+import 'package:testing/brownes.dart';
+import 'package:testing/walls.dart';
 
 var myKey = "AIzaSyDzLAc2Uos2XNBT26mMJRqQ33aHoSnF0oM";
 
@@ -70,225 +73,85 @@ class _MySplashPageState extends State<MySplashPage> {
   }
 }
 
-// class MyHomePage extends StatefulWidget {
-//   MyHomePage({Key key, this.title}) : super(key: key);
-
-//   final String title;
-
-//   @override
-//   _MyHomePageState createState() => _MyHomePageState();
-// }
-
 class _MyHomePageState extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        // appBar: new AppBar(
-        //   // Here we take the value from the MyHomePage object that was created by
-        //   // the App.build method, and use it to set our appbar title.
-        //   title: new Text("widget.title"),
-        //   centerTitle: true,
-        // ),
         body: new ListView(children: <Widget>[
+      new Text(
+        "Medieval Tour",
+        textAlign: TextAlign.center,
+        style: new TextStyle(
+          fontSize: 30.0,
+        ),
+      ),
       new MyImageWidget(),
       new RaisedButton(
-          child: Text('Hall Of The Red Earl'),
+          child: Text('Hall Of the Red Earl '),
           onPressed: () {
             //Navigator.pushNamed(context, MyHallPage.routeName);
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => _MyHallPageState()),
+              MaterialPageRoute(builder: (context) => MyHallPage()),
             );
             //MaterialPageRoute(builder: (context) => ));
           }),
       new MyKingsWidget(),
+      new RaisedButton(
+          child: Text('Kings Head'),
+          onPressed: () {
+            //Navigator.pushNamed(context, MyHallPage.routeName);
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => MyKingsPage()),
+            );
+            //MaterialPageRoute(builder: (context) => ));
+          }),
+      new MyNicholasWidget(),
       new Container(
         child: RaisedButton(
-            child: Text('Kings Head'),
+            child: Text('St.Nicholas Church'),
             elevation: 7.8,
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Map1()),
+                MaterialPageRoute(builder: (context) => MyNicholasPage()),
               );
             }),
       ),
+      new MyLynchsWidget(),
+      new RaisedButton(
+          child: Text('Lynchs Castle'),
+          onPressed: () {
+            //Navigator.pushNamed(context, MyHallPage.routeName);
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => MyLynchPage()),
+            );
+            //MaterialPageRoute(builder: (context) => ));
+          }),
+      new MyBrownesWidget(),
+      new RaisedButton(
+          child: Text('Brownes Doorway'),
+          onPressed: () {
+            //Navigator.pushNamed(context, MyHallPage.routeName);
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => MyBrownesPage()),
+            );
+            //MaterialPageRoute(builder: (context) => ));
+          }),
+      new MyWallWidget(),
+      new RaisedButton(
+          child: Text('Medieval Walls'),
+          onPressed: () {
+            //Navigator.pushNamed(context, MyHallPage.routeName);
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => MyWallPage()),
+            );
+            //MaterialPageRoute(builder: (context) => ));
+          }),
     ]));
-  }
-}
-
-class Map1 extends StatelessWidget {
-  MapView mapView = new MapView();
-
-  List<Marker> markers = <Marker>[
-    new Marker(
-      "Hall Of The Red Earl",
-      "Hall of the Red Earl",
-      53.2710,
-      -9.0537,
-    ),
-    new Marker("Lynch's Castle", "Lynch's Castle", 53.2722, -9.0533),
-    new Marker("st. nicholas' collegiate church",
-        "st. nicholas' collegiate church", 53.2727, -9.0539),
-    new Marker("Kings Head", "Kings Head", 53.2722, -9.0533),
-    new Marker("Eyre Square", "Eyre Square", 53.2747, -9.0500),
-  ];
-
-  displayMap() {
-    mapView.show(new MapOptions(
-      mapViewType: MapViewType.normal,
-      showUserLocation: true,
-      initialCameraPosition:
-          new CameraPosition(new Location(53.2707, -9.0568), 15.0),
-      title: "google map",
-    ));
-
-    mapView.onMapTapped.listen((tapped) {
-      mapView.setMarkers(markers);
-      mapView.zoomToFit(padding: 100);
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    mapView.show(new MapOptions(
-      mapViewType: MapViewType.normal,
-      showUserLocation: true,
-      initialCameraPosition:
-          new CameraPosition(new Location(53.2707, -9.0568), 15.0),
-      title: "google map",
-    ));
-    mapView.onMapTapped.listen((tapped) {
-      mapView.setMarkers(markers);
-      mapView.zoomToFit(padding: 100);
-    });
-    return new Scaffold(
-        appBar: new AppBar(
-          title: new Text("Hall Of the Red Earl"),
-        ),
-        body: new ListView(children: <Widget>[
-          displayMap(),
-        ]));
-  }
-}
-
-class _MyHallPageStateDB extends StatefulWidget{
-  @override
-_MyHallPageStateMore createState() => new _MyHallPageStateMore(); 
-}
-
-class _MyHallPageStateMore extends State<_MyHallPageStateDB> {
-final String url = "http://35.189.123.3/data?";
- //List data;
-  Map<dynamic, dynamic> data;
-  @override
-  void initState(){
-    super.initState();
-    this.getJsonData();
-  }
-
-  Future<String> getJsonData() async{
-    var response = await http.get(
-      //encode the url
-      Uri.encodeFull(url),
-      //only accept json response
-      headers: {"Accept": "application/json"}
-    );
-
-    //print(response.body);
-
-   //loads when app page for displaying data is
-   setState((){
-      data = json.decode(response.body);  
-    });
-
-    print(data["title"]);
-    print(data["description"]);
-    print(data["body"]);
-
-   // List data; 
-   // print(response.body);
-  //print(data[0]["title"]);
-
-     return "Success";
-  }
-  
-//Video
-  @override
-  Widget build(BuildContext context) {
-    return new Scaffold(
-       appBar: new AppBar(
-         title: new Text('Hall Of the Red Earl'),
-       ),
-       //prints 4 times
-
-        body: new ListView.builder(
-        itemCount: data == null? 0: data.length,
-        itemBuilder: (BuildContext context , i){
-          return new ListTile(
-            title: Text(data['title']),  
-            subtitle: new Text(data['body']),
-          );
-        }
-        )
-
-        );}
-    //prints 1 but error
-    /*  body: Material(
-            child: Column(children: <Widget> [
-               Text(data['title']), 
-             // Text(data["description"]),
-
-              
-            ])));
-  }*/
-
- /*@override
-  Widget build(BuildContext context) {
-    return new Scaffold(
-        appBar: new AppBar(
-          title: new Text("Hall Of the Red Earl"),
-        ), //AppBar
-        body: new ListView(children: <Widget>[
-          new MyImageWidget(),
-          new Text("Hall Of The Red Earl",
-              style: TextStyle(fontStyle: FontStyle.italic, fontSize: 15.0)),
-          new Text("MESSAGE- long getting info from db",
-              style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20.0)),
-  
-  ]));
-  }*/
-}
-
-
-//  new Text(data[index]['info']),
-class _MyHallPageState extends StatelessWidget {
-
-
-  @override
-  Widget build(BuildContext context) {
-    return new Scaffold(
-        appBar: new AppBar(
-          title: new Text("Hall Of the Red Earl"),
-        ),
-        body: new ListView(children: <Widget>[
-          new MyImageWidget(),
-          new Text("Hall Of The Red Earl",
-              style: TextStyle(fontStyle: FontStyle.italic, fontSize: 15.0)),
-          new Text(
-              "As one of the oldest sites in the medieval town of Galway, the Hall of the Red Earl is associated with the De Burgo family who founded the town in the 13th century. Within its walls, banquets were hosted, taxes were collected and justice was dispensed.",
-              style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20.0)),
-          new RaisedButton(
-              child: Text('Hall Of The Red Earl'),
-              onPressed: () {
-                //Navigator.pushNamed(context, MyHallPage.routeName);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => _MyHallPageStateDB()),
-                );
-                //MaterialPageRoute(builder: (context) => ));
-              }),
-        ]));
   }
 }
