@@ -3,7 +3,6 @@ import os
 from flask import request, jsonify
 from app import app, mongo
 import logger
-from flask_pymongo import PyMongo
 
 ROOT_PATH = os.environ.get('ROOT_PATH')
 LOG = logger.get_root_logger(
@@ -18,4 +17,5 @@ def user():
         return jsonify(data), 200
 
     data = request.get_json()
+
 
