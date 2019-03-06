@@ -13,7 +13,7 @@ LOG = logger.get_root_logger(
 def user():
     if request.method == 'GET':
         query = request.args
-        data = mongo.db.info.find(query)
+        data = mongo.db.info.find_one(query)
         return jsonify(data), 200
 
     data = request.get_json()
