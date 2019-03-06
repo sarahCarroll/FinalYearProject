@@ -17,11 +17,3 @@ def user():
         return jsonify(data), 200
 
     data = request.get_json()
-<<<<<<< HEAD
-=======
-
-<<<<<<< HEAD
-
-=======
->>>>>>> 0a705798b5d5df6e40460098a66e0ffd9278422b
->>>>>>> 3e7a1b79483ed2c5f41c0523b4e9f927178bcb93
