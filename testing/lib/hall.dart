@@ -56,19 +56,32 @@ final String url = "http://35.189.123.3/data?";
                             child: Container(
                           child: Text(data['body'],
                               style: TextStyle(
-                                  fontSize: 18.0, color: Colors.black54)),
+                                  fontSize: 18.0, color: Colors.black)),
+                        )),
+                        Card(
+                            child: Container(
+                          child: Text(data['body1'],
+                              style: TextStyle(
+                                  fontSize: 18.0, color: Colors.black)),
+                        )),
+                        Container(
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage("images/Hall/Hall(3).png")),
+                          ),
+                          height: 250.0,
+                          width: 600.0,
+                        ),
+                        Card(
+                            child: Container(
+                          child: Text(data['body2'],
+                              style: TextStyle(
+                                  fontSize: 18.0, color: Colors.black)),
                         )),
                   ]),
                 ),
               );
             }));
-        // body: new ListView(children: <Widget>[
-        //   new MyImageWidget(),
-        //   new Text("Hall Of The Red Earl",
-        //       style: TextStyle(fontStyle: FontStyle.italic, fontSize: 15.0)),
-        //   new Text("MESSAGE- long getting info from db",
-        //       style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20.0)),
-        // ]));
   }
 }
 
@@ -98,12 +111,6 @@ class _MyHallPageState extends State<MyHallPage> {
     });
 
     print(data['title']);
-    //print(data["description"]);
-    // print(data["body"]);
-
-    // List data;
-    // print(response.body);
-    //print(data[0]["title"]);
 
     return "data";
   }
@@ -143,7 +150,7 @@ class _MyHallPageState extends State<MyHallPage> {
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: new AppBar(
-          title: new Text("Hall"),
+          title: new Text("Hall of the Red Earl"),
         ),
         body: new ListView.builder(
             itemCount: data == null ? 0 : 1,
@@ -169,17 +176,14 @@ class _MyHallPageState extends State<MyHallPage> {
                                   onPressed: _previousImage),
                               RaisedButton(
                                   child: Text('next'), onPressed: _nextImage),
-                            ]),
+                            ]),        
                         Card(
                             child: Container(
-                          child: Text(data['title'],
+                          child: Text(data['description'],
                               style: TextStyle(
-                                  fontSize: 18.0, color: Colors.black54)),
+                                  fontSize: 18.0, color: Colors.black)),
                         )),
-
-                        //  new Text(
-                        //     "As one of the oldest sites in the medieval town of Galway, the Hall of the Red Earl is associated with the De Burgo family who founded the town in the 13th century. Within its walls, banquets were hosted, taxes were collected and justice was dispensed.",
-                        //     style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20.0)),
+                       
                         new RaisedButton(
                             child: Text('More info'),
                             onPressed: () {

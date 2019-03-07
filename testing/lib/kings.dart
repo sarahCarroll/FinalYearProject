@@ -1,24 +1,87 @@
 import 'package:flutter/material.dart';
 import 'package:testing/widget.dart';
 import 'package:testing/maps.dart';
+import 'package:http/http.dart' as http;
+import 'dart:async';
+import 'dart:convert';
 
-class _MyKingsPageStateMore extends StatelessWidget {
+class MyKingPageUrl extends StatefulWidget {
+  @override
+  _MyKingsPageStateMore createState() => new _MyKingsPageStateMore();
+}
+
+class _MyKingsPageStateMore extends State<MyKingPageUrl> {
+final String url = "http://35.189.123.3/data?";
+
+  Map<String, dynamic> data;
+
+  Future<String> getJsonData() async {
+    final response = await http.get(
+        //encode the url
+        Uri.encodeFull(url),
+        //only accept json response
+        headers: {"Content-Type": "application/json"});
+
+    setState(() {
+      data = json.decode(response.body);
+      assert(data != null);
+    });
+
+    print(data['body']);
+    return "data";
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getJsonData();
+    // print(data);
+  }
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: new AppBar(
           title: new Text("Kings Head"),
         ),
-        body: new ListView(children: <Widget>[
-          new MyImageWidget(),
-          new Text("Kings Head",
-              style: TextStyle(fontStyle: FontStyle.italic, fontSize: 15.0)),
-          new Text(
-              "While the famous 17th century Pictorial Map of Galway depicts a three storey residence adjoining a five storey building known as Bank’s Castle on the site of the present-day pub, archaeological evidence has shown, however, that a building probably existed there as far back as the 13th century. A number of features from the medieval building can still be seen in the premises. These include walls and windows while an impressive fireplace, which dates from 1612 and bears the family arms of three of the Tribe families greets customers on arrival.As suggested by the name, the building is famous for an association with the beheading of the king of England in 1649. Following the siege of Galway in 1652, it was seized by the notorious Cromwellian leader, Colonel Peter Stubbers from the mayor of Galway, Tomás Lynch Fitz-Ambrose. Stubbers appointed himself as the town’s military governor and according to legend, was equally feared and hated by the townspeople. Stubbers was involved in some way in the execution of King Charles I during England’s bloody Civil War (1642-49) which pitted Cromwell’s Parliamentarians against the monarchy. Some historians believe Stubbers wielded the axe which removed the King’s head from his body, while others think he was instrumental in finding an Irish executioner named Richard Gunning to do the dirty work. In any case, following the restoration of Charles II to the throne in 1660, Stubbers found himself a wanted man and made himself so scarce, he was never heard of again.Another interesting feature is located over the doorway of the building directly opposite The King’s Head. Known as an ‘armorial stone’, this is a carving dating back to 1615 which bears the crests of the two tribe families - the Ffrenches and the Ffonts. Such stones were often carved to mark a marriage between Tribe families and typically carried the initials of the bride and groom. In this case AF and MF. Indeed, it is well worth keeping a look out for various medieval insignias, plaques and architectural features on the city’s buildings as you wander around. You’re never too far away from one",
-              style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20.0)),
-        ]));
+       body: new ListView.builder(
+            itemCount: data == null ? 0 : 1,
+            itemBuilder: (BuildContext context, i) {
+              return new Container(
+                child: Center(
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: <Widget>[
+                        Container(
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage("images/kings/King(1).JPG")),
+                          ),
+                          height: 250.0,
+                          width: 600.0,
+                        ),
+                        Card(
+                            child: Container(
+                          child: Text(data['bodyKing'],
+                              style: TextStyle(
+                                  fontSize: 18.0, color: Colors.black)),
+                        )),  
+                        Container(
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage("images/kings/King(1).JPG")),
+                          ),
+                          height: 250.0,
+                          width: 600.0,
+                        ),
+                        
+                  ]),
+                ),
+              );
+            }));
   }
 }
+
 
 class MyKingsPage extends StatefulWidget {
   @override
@@ -26,6 +89,38 @@ class MyKingsPage extends StatefulWidget {
 }
 
 class _MyKingsPageState extends State<MyKingsPage> {
+final String url = "http://35.189.123.3/data?";
+  // List data;
+  Map<String, dynamic> data;
+  //var data;
+
+  Future<String> getJsonData() async {
+    final response = await http.get(
+        //encode the url
+        Uri.encodeFull(url),
+        //only accept json response
+        headers: {"Content-Type": "application/json"});
+
+    //print(response.body);
+
+    setState(() {
+      data = json.decode(response.body);
+      assert(data != null);
+    });
+
+    print(data['title']);
+
+    return "data";
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getJsonData();
+    // print(data);
+  }
+
+
   //https://www.youtube.com/watch?v=sC9qhNPvW1M
   int photoIndex = 0;
 
@@ -53,34 +148,45 @@ class _MyKingsPageState extends State<MyKingsPage> {
         appBar: new AppBar(
           title: new Text("Kings Head"),
         ),
-        body: new ListView(children: <Widget>[
-          Center(
-              child: Stack(children: <Widget>[
-            Container(
-              decoration: BoxDecoration(
-                image: DecorationImage(image: AssetImage(photos[photoIndex])),
-              ),
-              height: 250.0,
-              width: 600.0,
-            )
-          ])),
-          Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-            RaisedButton(child: Text('previous'), onPressed: _previousImage),
-            RaisedButton(child: Text('next'), onPressed: _nextImage),
-          ]),
-          new Text("Kings Head",
-              style: TextStyle(fontStyle: FontStyle.italic, fontSize: 15.0)),
-          new Text(
-              "(Please note that entry to this site is subject to opening hours).The King’s Head is located on High Street (known as Gaol Street in medieval times) and is one of Galway’s best known pubs. There is a long-standing local tradition that the building which houses the pub was strongly associated with the executioner of King Charles I in 1649.",
-              style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20.0)),
-          new RaisedButton(
+          body: new ListView.builder(
+            itemCount: data == null ? 0 : 1,
+            itemBuilder: (BuildContext context, i) {
+              return new Container(
+                child: Center(
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: <Widget>[
+                        Container(
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage(photos[photoIndex])),
+                          ),
+                          height: 250.0,
+                          width: 600.0,
+                        ),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              RaisedButton(
+                                  child: Text('previous'),
+                                  onPressed: _previousImage),
+                              RaisedButton(
+                                  child: Text('next'), onPressed: _nextImage),
+                            ]),        
+                        Card(
+                            child: Container(
+                          child: Text(data['descKing'],
+                              style: TextStyle(
+                                  fontSize: 18.0, color: Colors.black)),
+                        )),
+           new RaisedButton(
               child: Text('More Info'),
               onPressed: () {
                 //Navigator.pushNamed(context, MyHallPage.routeName);
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => _MyKingsPageStateMore()),
+                      builder: (context) => MyKingPageUrl()),
                 );
                 //MaterialPageRoute(builder: (context) => ));
               }),
@@ -94,6 +200,9 @@ class _MyKingsPageState extends State<MyKingsPage> {
                 );
                 //MaterialPageRoute(builder: (context) => ));
               }),
-        ]));
+           ]),
+                ),
+              );
+            }));
   }
 }
