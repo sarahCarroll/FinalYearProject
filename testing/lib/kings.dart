@@ -69,7 +69,7 @@ final String url = "http://35.189.123.3/data?";
                         Container(
                           decoration: BoxDecoration(
                             image: DecorationImage(
-                                image: AssetImage("images/kings/King(1).JPG")),
+                                image: AssetImage("images/kings/stone.jpg")),
                           ),
                           height: 250.0,
                           width: 600.0,

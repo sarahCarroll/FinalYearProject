@@ -60,7 +60,7 @@ class _MyLynchPageStateMore extends State<MyLynchPageUrl>{
                         Container(
                           decoration: BoxDecoration(
                             image: DecorationImage(
-                                image: AssetImage("images/Hall/Hall(3).png")),
+                                image: AssetImage("images/lynch's/old.jpg")),
                           ),
                           height: 250.0,
                           width: 600.0,
@@ -74,7 +74,7 @@ class _MyLynchPageStateMore extends State<MyLynchPageUrl>{
                         Container(
                           decoration: BoxDecoration(
                             image: DecorationImage(
-                                image: AssetImage("images/Hall/Hall(3).png")),
+                                image: AssetImage("images/lynch's/sketch.jpg")),
                           ),
                           height: 250.0,
                           width: 600.0,

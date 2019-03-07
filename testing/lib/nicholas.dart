@@ -60,7 +60,7 @@ class _MyNicholasPageStateMore extends State<MyStPageUrl> {
                         Container(
                           decoration: BoxDecoration(
                             image: DecorationImage(
-                                image: AssetImage("images/Hall/Hall(3).png")),
+                                image: AssetImage("images/nicks/Nicks(1).jpg")),
                           ),
                           height: 250.0,
                           width: 600.0,
@@ -74,7 +74,7 @@ class _MyNicholasPageStateMore extends State<MyStPageUrl> {
                         Container(
                           decoration: BoxDecoration(
                             image: DecorationImage(
-                                image: AssetImage("images/Hall/Hall(3).png")),
+                                image: AssetImage("images/nicks/stone.jpg")),
                           ),
                           height: 250.0,
                           width: 600.0,

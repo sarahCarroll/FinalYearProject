@@ -22,6 +22,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
   map_view: ^0.0.14
+  http: ^0.12.0+1
 
 dev_dependencies:
   flutter_test:
@@ -55,22 +56,27 @@ flutter:
    - images/Hall/Hall(2).JPG
    - images/Hall/Hall(3).png
    - images/Hall/Hall(4).png
+   - images/Hall/red.jpg
 
    
    - images/kings/King(1).JPG
    - images/kings/King(2).jpg
    - images/kings/King(3).gif
+   - images/kings/stone.jpg
   
    
    - images/nicks/Nicks(1).jpg
    - images/nicks/Nicks(2).jpg
    - images/nicks/Nicks(3).JPG
    - images/nicks/Nicks(4).jpg
+   - images/nicks/stone.jpg
   
   
    - images/lynch's/lynchs(1).jpg
    - images/lynch's/lynchs(2).jpg
    - images/lynch's/lynchs(3).jpg
+   - images/lynch's/old.jpg
+   - images/lynch's/sketch.jpg
 
    
    - images/brownes/browne(1).jpg
@@ -88,6 +94,7 @@ flutter:
    - images/lynchs.jpg
    - images/brownes.jpg
    - images/walls.jpg
+   - images/guide.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.

@@ -59,7 +59,7 @@ class _MyBrownesPageStateMore extends State<MyBrownePageUrl> {
                         Container(
                           decoration: BoxDecoration(
                             image: DecorationImage(
-                                image: AssetImage("images/Hall/Hall(3).png")),
+                                image: AssetImage("images/brownes/browne(3).jpg")),
                           ),
                           height: 250.0,
                           width: 600.0,

@@ -58,6 +58,14 @@ final String url = "http://35.189.123.3/data?";
                               style: TextStyle(
                                   fontSize: 18.0, color: Colors.black)),
                         )),
+                        Container(
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage("images/Hall/red.jpg")),
+                          ),
+                          height: 250.0,
+                          width: 600.0,
+                        ),
                         Card(
                             child: Container(
                           child: Text(data['body1'],

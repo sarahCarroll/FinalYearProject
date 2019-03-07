@@ -62,7 +62,7 @@ class _MyWallsPageStateMore extends State<MyWallPageUrl>  {
                         Container(
                           decoration: BoxDecoration(
                             image: DecorationImage(
-                                image: AssetImage("images/Hall/Hall(3).png")),
+                                image: AssetImage("images/walls/walls(3).JPG")),
                           ),
                           height: 250.0,
                           width: 600.0,
@@ -76,7 +76,7 @@ class _MyWallsPageStateMore extends State<MyWallPageUrl>  {
                         Container(
                           decoration: BoxDecoration(
                             image: DecorationImage(
-                                image: AssetImage("images/Hall/Hall(3).png")),
+                                image: AssetImage("images/walls/walls(1).JPG")),
                           ),
                           height: 250.0,
                           width: 600.0,
