@@ -53,7 +53,7 @@ class Map1 extends StatelessWidget {
           title: new Text("Hall Of the Red Earl"),
         ),
         body: new ListView(children: <Widget>[
-          new displayMap(),
+          displayMap(),
         ]));
   }
 }

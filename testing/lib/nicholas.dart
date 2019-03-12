@@ -11,6 +11,8 @@ class MyStPageUrl extends StatefulWidget {
   _MyNicholasPageStateMore createState() => new _MyNicholasPageStateMore();
 }
 class _MyNicholasPageStateMore extends State<MyStPageUrl> {
+
+  //final String urlGET = "http://35.189.123.3/data?_id=";
   final String url = "http://35.189.123.3/data?";
 
   Map<String, dynamic> data;
@@ -60,7 +62,7 @@ class _MyNicholasPageStateMore extends State<MyStPageUrl> {
                         Container(
                           decoration: BoxDecoration(
                             image: DecorationImage(
-                                image: AssetImage("images/nicks/Nicks(1).jpg")),
+                                image: AssetImage("images/Hall/Hall(3).png")),
                           ),
                           height: 250.0,
                           width: 600.0,
@@ -74,7 +76,7 @@ class _MyNicholasPageStateMore extends State<MyStPageUrl> {
                         Container(
                           decoration: BoxDecoration(
                             image: DecorationImage(
-                                image: AssetImage("images/nicks/stone.jpg")),
+                                image: AssetImage("images/Hall/Hall(3).png")),
                           ),
                           height: 250.0,
                           width: 600.0,
@@ -198,15 +200,15 @@ class _MyNicholasPageState extends State<MyNicholasPage> {
                               style: TextStyle(
                                   fontSize: 18.0, color: Colors.black)),
                         )),
-                              new RaisedButton(
-              child: Text('More Info'),
-              onPressed: () {
-                //Navigator.pushNamed(context, MyHallPage.routeName);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => MyStPageUrl()),
-                );
+                  new RaisedButton(
+                  child: Text('More Info'),
+                  onPressed: () {
+                    //Navigator.pushNamed(context, MyHallPage.routeName);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => MyStPageUrl()),
+                    );
                 //MaterialPageRoute(builder: (context) => ));
               }),
           new RaisedButton(

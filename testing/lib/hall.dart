@@ -11,10 +11,10 @@ class MyHallPageUrl extends StatefulWidget {
   _MyHallPageStateMore createState() => new _MyHallPageStateMore();
 }
 class _MyHallPageStateMore extends State<MyHallPageUrl> {
-final String url = "http://35.189.123.3/data?";
+final String url = "http://35.189.123.3/data?_id=";
 
   Map<String, dynamic> data;
-
+ 
   Future<String> getJsonData() async {
     final response = await http.get(
         //encode the url
@@ -24,17 +24,22 @@ final String url = "http://35.189.123.3/data?";
 
     setState(() {
       data = json.decode(response.body);
-      assert(data != null);
+      
     });
 
     print(data['body']);
     return "data";
   }
+  
 
   @override
   void initState() {
     super.initState();
-    getJsonData();
+    
+    getJsonData("body", data1);
+    getJsonData("body1", data2);
+    getJsonData("body2", data3);
+   
     // print(data);
   }
 
@@ -45,7 +50,7 @@ final String url = "http://35.189.123.3/data?";
           title: new Text("Hall Of the Red Earl"),
         ),
          body: new ListView.builder(
-            itemCount: data == null ? 0 : 1,
+            itemCount: data2 == null ? 0 : 1,
             itemBuilder: (BuildContext context, i) {
               return new Container(
                 child: Center(
@@ -54,7 +59,8 @@ final String url = "http://35.189.123.3/data?";
                       children: <Widget>[
                         Card(
                             child: Container(
-                          child: Text(data['body'],
+                           
+                          child: Text(data1['description'],
                               style: TextStyle(
                                   fontSize: 18.0, color: Colors.black)),
                         )),
@@ -68,7 +74,7 @@ final String url = "http://35.189.123.3/data?";
                         ),
                         Card(
                             child: Container(
-                          child: Text(data['body1'],
+                          child: Text(data2['description'],
                               style: TextStyle(
                                   fontSize: 18.0, color: Colors.black)),
                         )),
@@ -82,7 +88,7 @@ final String url = "http://35.189.123.3/data?";
                         ),
                         Card(
                             child: Container(
-                          child: Text(data['body2'],
+                          child: Text(data3['description'],
                               style: TextStyle(
                                   fontSize: 18.0, color: Colors.black)),
                         )),
