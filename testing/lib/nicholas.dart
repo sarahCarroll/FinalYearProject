@@ -15,7 +15,7 @@ class _MyNicholasPageStateMore extends State<MyStPageUrl> {
   //final String urlGET = "http://35.189.123.3/data?_id=";
   final String url = "http://35.189.123.3/data?";
 
-  Map<String, dynamic> data;
+  List data;
 
   Future<String> getJsonData() async {
     final response = await http.get(
@@ -24,12 +24,10 @@ class _MyNicholasPageStateMore extends State<MyStPageUrl> {
         //only accept json response
         headers: {"Content-Type": "application/json"});
 
-    setState(() {
-      data = json.decode(response.body);
-      assert(data != null);
+     setState(() {
+      var resBody = json.decode(response.body);
+      data = resBody["multi"];
     });
-
-    print(data['body']);
     return "data";
   }
 
@@ -55,35 +53,35 @@ class _MyNicholasPageStateMore extends State<MyStPageUrl> {
                       children: <Widget>[
                         Card(
                             child: Container(
-                          child: Text(data['bodySt'],
+                          child: Text(data[10]['description'],
                               style: TextStyle(
                                   fontSize: 18.0, color: Colors.black)),
                         )),
                         Container(
                           decoration: BoxDecoration(
                             image: DecorationImage(
-                                image: AssetImage("images/Hall/Hall(3).png")),
+                                image: AssetImage("images/nicks/Nicks(1).jpg")),
                           ),
                           height: 250.0,
                           width: 600.0,
                         ),
                         Card(
                             child: Container(
-                          child: Text(data['bodySt2'],
+                          child: Text(data[11]['description'],
                               style: TextStyle(
                                   fontSize: 18.0, color: Colors.black)),
                         )),
                         Container(
                           decoration: BoxDecoration(
                             image: DecorationImage(
-                                image: AssetImage("images/Hall/Hall(3).png")),
+                                image: AssetImage("images/nicks/stone.jpg")),
                           ),
                           height: 250.0,
                           width: 600.0,
                         ),
                         Card(
                             child: Container(
-                          child: Text(data['bodySt3'],
+                          child: Text(data[12]['description'],
                               style: TextStyle(
                                   fontSize: 18.0, color: Colors.black)),
                         )),
@@ -97,7 +95,7 @@ class _MyNicholasPageStateMore extends State<MyStPageUrl> {
                         ),
                         Card(
                             child: Container(
-                          child: Text(data['bodySt4'],
+                          child: Text(data[13]['description'],
                               style: TextStyle(
                                   fontSize: 18.0, color: Colors.black)),
                         )),
@@ -115,7 +113,7 @@ class MyNicholasPage extends StatefulWidget {
 
 class _MyNicholasPageState extends State<MyNicholasPage> {
   final String url = "http://35.189.123.3/data?";
-  Map<String, dynamic> data;
+  List data;
 
   Future<String> getJsonData() async {
     final response = await http.get(
@@ -124,12 +122,11 @@ class _MyNicholasPageState extends State<MyNicholasPage> {
         //only accept json response
         headers: {"Content-Type": "application/json"});
 
-    setState(() {
-      data = json.decode(response.body);
-      assert(data != null);
+     setState(() {
+      var resBody = json.decode(response.body);
+      data = resBody["multi"];
     });
 
-    print(data['title']);
 
     return "data";
   }
@@ -196,7 +193,7 @@ class _MyNicholasPageState extends State<MyNicholasPage> {
                             ]),        
                         Card(
                             child: Container(
-                          child: Text(data['descSt'],
+                          child: Text(data[18]['description'],
                               style: TextStyle(
                                   fontSize: 18.0, color: Colors.black)),
                         )),
