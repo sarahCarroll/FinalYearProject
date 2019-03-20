@@ -14,7 +14,7 @@ def user():
         query = request.args
         output = []
         for a in mongo.db.info.find(query):
-            output.append('_id' : a['_id'], 'description') : a['description']
+            output.append({'_id' : a['_id'], 'description' : a['description']})
         
         return jsonify({'multi' : output}), 200
 
