@@ -39,7 +39,3 @@ data = request.get_json()
         else:
             return jsonify({'ok': False, 'message': 'Bad request parameters!'}), 400
 
-    if request.method == 'PATCH':
-        if data.get('query', {}) != {}:
-            mongo.db.users.update_one(
-data['query'], {'$set': data.get('payload', {})})
