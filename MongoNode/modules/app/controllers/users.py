@@ -20,7 +20,6 @@ def user():
 
     data = request.get_json()
 
-data = request.get_json()
     if request.method == 'POST':
         if data.get('name', None) is not None and data.get('email', None) is not None:
             mongo.db.users.insert_one(data)
