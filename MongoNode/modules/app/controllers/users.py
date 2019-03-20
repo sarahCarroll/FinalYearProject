@@ -14,13 +14,12 @@ def user():
         query = request.args
         output = []
         for a in mongo.db.info.find(query):
-            output.append('_id' : a['_id'], 'description') : a['description']
+            output.append({'_id': a['_id'], 'description' : a['description']})
         
         return jsonify({'multi' : output}), 200
 
     data = request.get_json()
 
-data = request.get_json()
     if request.method == 'POST':
         if data.get('name', None) is not None and data.get('email', None) is not None:
             mongo.db.users.insert_one(data)
@@ -39,7 +38,3 @@ data = request.get_json()
         else:
             return jsonify({'ok': False, 'message': 'Bad request parameters!'}), 400
 
-    if request.method == 'PATCH':
-        if data.get('query', {}) != {}:
-            mongo.db.users.update_one(
-data['query'], {'$set': data.get('payload', {})})
