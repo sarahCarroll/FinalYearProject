@@ -12,7 +12,7 @@ class MyBrownePageUrl extends StatefulWidget {
 class _MyBrownesPageStateMore extends State<MyBrownePageUrl> {
   final String url = "http://35.189.123.3/data?";
 
-  Map<String, dynamic> data;
+  List data;
 
   Future<String> getJsonData() async {
     final response = await http.get(
@@ -21,12 +21,11 @@ class _MyBrownesPageStateMore extends State<MyBrownePageUrl> {
         //only accept json response
         headers: {"Content-Type": "application/json"});
 
-    setState(() {
-      data = json.decode(response.body);
-      assert(data != null);
+      setState(() {
+      var resBody = json.decode(response.body);
+      data = resBody["multi"];
     });
 
-    print(data['body']);
     return "data";
   }
 
@@ -52,7 +51,7 @@ class _MyBrownesPageStateMore extends State<MyBrownePageUrl> {
                       children: <Widget>[
                         Card(
                             child: Container(
-                          child: Text(data['bodyBrowne'],
+                          child: Text(data[3]['description'],
                               style: TextStyle(
                                   fontSize: 18.0, color: Colors.black)),
                         )),
@@ -66,7 +65,7 @@ class _MyBrownesPageStateMore extends State<MyBrownePageUrl> {
                         ),
                         Card(
                             child: Container(
-                          child: Text(data['bodyBrowne1'],
+                          child: Text(data[4]['description'],
                               style: TextStyle(
                                   fontSize: 18.0, color: Colors.black)),
                         )),
@@ -84,7 +83,8 @@ class MyBrownesPage extends StatefulWidget {
 
 class _MyBrownesPageState extends State<MyBrownesPage> {
 final String url = "http://35.189.123.3/data?";
-  Map<String, dynamic> data;
+  
+  List data;
 
   Future<String> getJsonData() async {
     final response = await http.get(
@@ -93,12 +93,10 @@ final String url = "http://35.189.123.3/data?";
         //only accept json response
         headers: {"Content-Type": "application/json"});
 
-    setState(() {
-      data = json.decode(response.body);
-      assert(data != null);
+     setState(() {
+      var resBody = json.decode(response.body);
+      data = resBody["multi"];
     });
-
-    print(data['title']);
 
     return "data";
   }
@@ -164,7 +162,7 @@ final String url = "http://35.189.123.3/data?";
                             ]),        
                         Card(
                             child: Container(
-                          child: Text(data['descBrowne'],
+                          child: Text(data[15]['description'],
                               style: TextStyle(
                                   fontSize: 18.0, color: Colors.black)),
                         )),

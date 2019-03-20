@@ -14,7 +14,7 @@ class _MyWallsPageStateMore extends State<MyWallPageUrl>  {
  
   final String url = "http://35.189.123.3/data?";
 
-  Map<String, dynamic> data;
+  List data;
 
   Future<String> getJsonData() async {
     final response = await http.get(
@@ -23,12 +23,12 @@ class _MyWallsPageStateMore extends State<MyWallPageUrl>  {
         //only accept json response
         headers: {"Content-Type": "application/json"});
 
-    setState(() {
-      data = json.decode(response.body);
-      assert(data != null);
+      setState(() {
+      var resBody = json.decode(response.body);
+      data = resBody["multi"];
     });
 
-    print(data['body']);
+  
     return "data";
   }
 
@@ -55,7 +55,7 @@ class _MyWallsPageStateMore extends State<MyWallPageUrl>  {
                       children: <Widget>[
                         Card(
                             child: Container(
-                          child: Text(data['bodyWall'],
+                          child: Text(data[14]['description'],
                               style: TextStyle(
                                   fontSize: 18.0, color: Colors.black)),
                         )),
@@ -69,7 +69,7 @@ class _MyWallsPageStateMore extends State<MyWallPageUrl>  {
                         ),
                         Card(
                             child: Container(
-                          child: Text(data['bodySparch'],
+                          child: Text(data[9]['description'],
                               style: TextStyle(
                                   fontSize: 18.0, color: Colors.black)),
                         )),
@@ -95,7 +95,7 @@ class MyWallPage extends StatefulWidget {
 
 class _MyWallsPageState extends State<MyWallPage> {
    final String url = "http://35.189.123.3/data?";
-  Map<String, dynamic> data;
+  List data;
 
   Future<String> getJsonData() async {
     final response = await http.get(
@@ -104,12 +104,10 @@ class _MyWallsPageState extends State<MyWallPage> {
         //only accept json response
         headers: {"Content-Type": "application/json"});
 
-    setState(() {
-      data = json.decode(response.body);
-      assert(data != null);
+     setState(() {
+      var resBody = json.decode(response.body);
+      data = resBody["multi"];
     });
-
-    print(data['title']);
 
     return "data";
   }
@@ -174,7 +172,7 @@ class _MyWallsPageState extends State<MyWallPage> {
                             ]),        
                         Card(
                             child: Container(
-                          child: Text(data['descWall'],
+                          child: Text(data[19]['description'],
                               style: TextStyle(
                                   fontSize: 18.0, color: Colors.black)),
                         )),

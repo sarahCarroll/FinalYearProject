@@ -13,7 +13,7 @@ class MyLynchPageUrl extends StatefulWidget {
 class _MyLynchPageStateMore extends State<MyLynchPageUrl>{
  final String url = "http://35.189.123.3/data?";
 
-  Map<String, dynamic> data;
+  List data;
 
   Future<String> getJsonData() async {
     final response = await http.get(
@@ -22,12 +22,11 @@ class _MyLynchPageStateMore extends State<MyLynchPageUrl>{
         //only accept json response
         headers: {"Content-Type": "application/json"});
 
-    setState(() {
-      data = json.decode(response.body);
-      assert(data != null);
+     setState(() {
+      var resBody = json.decode(response.body);
+      data = resBody["multi"];
     });
 
-    print(data['body']);
     return "data";
   }
 
@@ -53,7 +52,7 @@ class _MyLynchPageStateMore extends State<MyLynchPageUrl>{
                       children: <Widget>[
                         Card(
                             child: Container(
-                          child: Text(data['bodyLynch'],
+                          child: Text(data[6]['description'],
                               style: TextStyle(
                                   fontSize: 18.0, color: Colors.black)),
                         )),
@@ -67,7 +66,7 @@ class _MyLynchPageStateMore extends State<MyLynchPageUrl>{
                         ),
                         Card(
                             child: Container(
-                          child: Text(data['bodyLynch1'],
+                          child: Text(data[7]['description'],
                               style: TextStyle(
                                   fontSize: 18.0, color: Colors.black)),
                         )),
@@ -81,7 +80,7 @@ class _MyLynchPageStateMore extends State<MyLynchPageUrl>{
                         ),
                         Card(
                             child: Container(
-                          child: Text(data['bodyLynch2'],
+                          child: Text(data[8]['description'],
                               style: TextStyle(
                                   fontSize: 18.0, color: Colors.black)),
                         )),
@@ -99,7 +98,7 @@ class MyLynchPage extends StatefulWidget {
 
 class _MyLynchsPageState extends State<MyLynchPage> {
   final String url = "http://35.189.123.3/data?";
-  Map<String, dynamic> data;
+  List data;
 
   Future<String> getJsonData() async {
     final response = await http.get(
@@ -108,13 +107,12 @@ class _MyLynchsPageState extends State<MyLynchPage> {
         //only accept json response
         headers: {"Content-Type": "application/json"});
 
-    setState(() {
-      data = json.decode(response.body);
-      assert(data != null);
+   setState(() {
+      var resBody = json.decode(response.body);
+      data = resBody["multi"];
     });
 
-    print(data['title']);
-
+  
     return "data";
   }
 
@@ -178,7 +176,7 @@ class _MyLynchsPageState extends State<MyLynchPage> {
                             ]),        
                         Card(
                             child: Container(
-                          child: Text(data['descLynch'],
+                          child: Text(data[17]['description'],
                               style: TextStyle(
                                   fontSize: 18.0, color: Colors.black)),
                         )),

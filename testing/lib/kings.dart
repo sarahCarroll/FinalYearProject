@@ -13,7 +13,7 @@ class MyKingPageUrl extends StatefulWidget {
 class _MyKingsPageStateMore extends State<MyKingPageUrl> {
 final String url = "http://35.189.123.3/data?";
 
-  Map<String, dynamic> data;
+  List data;
 
   Future<String> getJsonData() async {
     final response = await http.get(
@@ -22,12 +22,11 @@ final String url = "http://35.189.123.3/data?";
         //only accept json response
         headers: {"Content-Type": "application/json"});
 
-    setState(() {
-      data = json.decode(response.body);
-      assert(data != null);
+     setState(() {
+      var resBody = json.decode(response.body);
+      data = resBody["multi"];
     });
 
-    print(data['body']);
     return "data";
   }
 
@@ -62,7 +61,7 @@ final String url = "http://35.189.123.3/data?";
                         ),
                         Card(
                             child: Container(
-                          child: Text(data['bodyKing'],
+                          child: Text(data[5]['description'],
                               style: TextStyle(
                                   fontSize: 18.0, color: Colors.black)),
                         )),  
@@ -91,7 +90,7 @@ class MyKingsPage extends StatefulWidget {
 class _MyKingsPageState extends State<MyKingsPage> {
 final String url = "http://35.189.123.3/data?";
   // List data;
-  Map<String, dynamic> data;
+  List data;
   //var data;
 
   Future<String> getJsonData() async {
@@ -103,12 +102,10 @@ final String url = "http://35.189.123.3/data?";
 
     //print(response.body);
 
-    setState(() {
-      data = json.decode(response.body);
-      assert(data != null);
+     setState(() {
+      var resBody = json.decode(response.body);
+      data = resBody["multi"];
     });
-
-    print(data['title']);
 
     return "data";
   }
@@ -175,7 +172,7 @@ final String url = "http://35.189.123.3/data?";
                             ]),        
                         Card(
                             child: Container(
-                          child: Text(data['descKing'],
+                          child: Text(data[16]['description'],
                               style: TextStyle(
                                   fontSize: 18.0, color: Colors.black)),
                         )),

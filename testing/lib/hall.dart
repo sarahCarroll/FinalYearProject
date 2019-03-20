@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:testing/widget.dart';
 import 'package:testing/maps.dart';
+import 'package:testing/info_model.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
@@ -11,10 +12,12 @@ class MyHallPageUrl extends StatefulWidget {
   _MyHallPageStateMore createState() => new _MyHallPageStateMore();
 }
 class _MyHallPageStateMore extends State<MyHallPageUrl> {
-final String url = "http://35.189.123.3/data?_id=";
+final String url = "http://35.189.123.3/data?";
 
-  Map<String, dynamic> data;
- 
+     List data;
+  //Map<String, dynamic> data;
+  //var data;
+
   Future<String> getJsonData() async {
     final response = await http.get(
         //encode the url
@@ -22,27 +25,24 @@ final String url = "http://35.189.123.3/data?_id=";
         //only accept json response
         headers: {"Content-Type": "application/json"});
 
+    //print(response.body);
+
     setState(() {
-      data = json.decode(response.body);
-      
+      var resBody = json.decode(response.body);
+      data = resBody["multi"];
     });
 
-    print(data['body']);
+    //print(data['title']);
+
     return "data";
   }
-  
 
   @override
   void initState() {
     super.initState();
-    
-    getJsonData("body", data1);
-    getJsonData("body1", data2);
-    getJsonData("body2", data3);
-   
+    getJsonData();
     // print(data);
   }
-
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -50,7 +50,7 @@ final String url = "http://35.189.123.3/data?_id=";
           title: new Text("Hall Of the Red Earl"),
         ),
          body: new ListView.builder(
-            itemCount: data2 == null ? 0 : 1,
+            itemCount: data == null ? 0 : 1,
             itemBuilder: (BuildContext context, i) {
               return new Container(
                 child: Center(
@@ -59,8 +59,7 @@ final String url = "http://35.189.123.3/data?_id=";
                       children: <Widget>[
                         Card(
                             child: Container(
-                           
-                          child: Text(data1['description'],
+                          child: Text(data[i]['description'],
                               style: TextStyle(
                                   fontSize: 18.0, color: Colors.black)),
                         )),
@@ -74,7 +73,7 @@ final String url = "http://35.189.123.3/data?_id=";
                         ),
                         Card(
                             child: Container(
-                          child: Text(data2['description'],
+                          child: Text(data[1]['description'],
                               style: TextStyle(
                                   fontSize: 18.0, color: Colors.black)),
                         )),
@@ -88,7 +87,7 @@ final String url = "http://35.189.123.3/data?_id=";
                         ),
                         Card(
                             child: Container(
-                          child: Text(data3['description'],
+                          child: Text(data[2]['description'],
                               style: TextStyle(
                                   fontSize: 18.0, color: Colors.black)),
                         )),
@@ -106,8 +105,8 @@ class MyHallPage extends StatefulWidget {
 
 class _MyHallPageState extends State<MyHallPage> {
   final String url = "http://35.189.123.3/data?";
-  // List data;
-  Map<String, dynamic> data;
+   List data;
+  //Map<String, dynamic> data;
   //var data;
 
   Future<String> getJsonData() async {
@@ -120,11 +119,11 @@ class _MyHallPageState extends State<MyHallPage> {
     //print(response.body);
 
     setState(() {
-      data = json.decode(response.body);
-      assert(data != null);
+      var resBody = json.decode(response.body);
+      data = resBody["multi"];
     });
 
-    print(data['title']);
+    //print(data['title']);
 
     return "data";
   }
@@ -193,7 +192,7 @@ class _MyHallPageState extends State<MyHallPage> {
                             ]),        
                         Card(
                             child: Container(
-                          child: Text(data['description'],
+                          child: Text(data[20]['description'],
                               style: TextStyle(
                                   fontSize: 18.0, color: Colors.black)),
                         )),
