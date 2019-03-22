@@ -44,7 +44,7 @@ class _MySplashPageState extends State<MySplashPage> {
     // TODO: implement initState
     super.initState();
     Timer(
-        Duration(seconds: 5),
+        Duration(seconds: 7),
         () => Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => _MyHomePageState()),
@@ -68,7 +68,10 @@ class _MySplashPageState extends State<MySplashPage> {
           new Text(
             "athors: Abigail Culkin and Sarah Carroll",
             textAlign: TextAlign.center,
-          )
+          ),
+          new Image(
+            image: AssetImage("images/guide.png"),
+          ),
         ]));
   }
 }
