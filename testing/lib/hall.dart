@@ -6,15 +6,15 @@ import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
 
-
 class MyHallPageUrl extends StatefulWidget {
   @override
   _MyHallPageStateMore createState() => new _MyHallPageStateMore();
 }
-class _MyHallPageStateMore extends State<MyHallPageUrl> {
-final String url = "http://35.189.123.3/data?";
 
-     List data;
+class _MyHallPageStateMore extends State<MyHallPageUrl> {
+  final String url = "http://35.189.123.3/data?";
+
+  List data;
   //Map<String, dynamic> data;
   //var data;
 
@@ -43,13 +43,14 @@ final String url = "http://35.189.123.3/data?";
     getJsonData();
     // print(data);
   }
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: new AppBar(
           title: new Text("Hall Of the Red Earl"),
         ),
-         body: new ListView.builder(
+        body: new ListView.builder(
             itemCount: data == null ? 0 : 1,
             itemBuilder: (BuildContext context, i) {
               return new Container(
@@ -91,7 +92,7 @@ final String url = "http://35.189.123.3/data?";
                               style: TextStyle(
                                   fontSize: 18.0, color: Colors.black)),
                         )),
-                  ]),
+                      ]),
                 ),
               );
             }));
@@ -105,7 +106,7 @@ class MyHallPage extends StatefulWidget {
 
 class _MyHallPageState extends State<MyHallPage> {
   final String url = "http://35.189.123.3/data?";
-   List data;
+  List data;
   //Map<String, dynamic> data;
   //var data;
 
@@ -189,14 +190,14 @@ class _MyHallPageState extends State<MyHallPage> {
                                   onPressed: _previousImage),
                               RaisedButton(
                                   child: Text('next'), onPressed: _nextImage),
-                            ]),        
+                            ]),
                         Card(
                             child: Container(
                           child: Text(data[20]['description'],
                               style: TextStyle(
                                   fontSize: 18.0, color: Colors.black)),
                         )),
-                       
+
                         new RaisedButton(
                             child: Text('More info'),
                             onPressed: () {
@@ -204,8 +205,7 @@ class _MyHallPageState extends State<MyHallPage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) =>
-                                        MyHallPageUrl()),
+                                    builder: (context) => MyHallPageUrl()),
                               );
                               //MaterialPageRoute(builder: (context) => ));
                             }),
