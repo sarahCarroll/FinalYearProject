@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:map_view/map_view.dart';
-import 'package:map_view/toolbar_action.dart';
 
 class Map1 extends StatelessWidget {
   MapView mapView = new MapView();
@@ -38,11 +37,23 @@ class Map1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-            backgroundColor: Colors.grey,
-            title: Text("press back to return to previous page")),
-        body: new ListView(
-            children: <Widget>[displayMap(), new Text('This is an example')]));
+    mapView.show(new MapOptions(
+      mapViewType: MapViewType.normal,
+      showUserLocation: true,
+      initialCameraPosition:
+          new CameraPosition(new Location(53.2707, -9.0568), 15.0),
+      title: "google map",
+    ));
+    mapView.onMapTapped.listen((tapped) {
+      mapView.setMarkers(markers);
+      mapView.zoomToFit(padding: 100);
+    });
+    return new Scaffold(
+        appBar: new AppBar(
+          title: new Text("Hall Of the Red Earl"),
+        ),
+        body: new ListView(children: <Widget>[
+          displayMap(),
+        ]));
   }
 }
