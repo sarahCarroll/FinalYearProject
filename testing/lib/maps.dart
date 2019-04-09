@@ -50,10 +50,11 @@ class Map1 extends StatelessWidget {
     });
     return new Scaffold(
         appBar: new AppBar(
-          title: new Text("Hall Of the Red Earl"),
+          title: new Text("press back"),
         ),
         body: new ListView(children: <Widget>[
           displayMap(),
+          new Text("press back to go back to previous page")
         ]));
   }
 }
