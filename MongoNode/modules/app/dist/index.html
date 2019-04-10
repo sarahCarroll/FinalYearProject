@@ -12,6 +12,55 @@
 
 <body>
     <h1>Welcome to full-stack tutorial using flask & react</h1>
+<!--	<div class="newspaper">
+		<form method="POST">
+			{{ dataC.hidden_tag() }}
+			<fieldset>
+		        	<legend>Create Field</legend>
+				{{ multi._id }}<br>
+				{{ multi.description }}<br>
+				</fieldset>										</form>
+				<form  method="PATCH">
+				{{ dataU.hidden_tag() }}
+				<fieldset>
+				<legend>Update Description </legend>
+				{{ multi._id }}<br>
+				{{ multi.description }}<br>
+				
+			</fieldset>
+		</form>
+		<form method="DELETE">
+			{{ multi.hidden_tag() }}
+			<fieldset>
+				<legend>Delete Data</legend>
+				{{ multi._id }}<br>
+				{{ multi.description }}<br>
+			</fieldset>
+		</form>
+	</div>
+	<h3>Update tasks with a reference</h3>  
+	    <form action="/action3" method="POST">  
+		{% for i in data %}  
+		Unique Object ID : {{ i['_id'] }}<br/>  
+		<input type="text" name="_id" value="{{ i['_id'] }}" hidden>  
+				      
+		<table>    
+		<tr>  
+		<td>Description</td><td> : </td><td><textarea type="text" name="descripiton" rows=3 cols=30 placeholder="{{ i['descripiton'] }}"> {{ i['description'] }} </textarea></td>  
+		</tr>   
+		</table>  
+		{% endfor %}  
+		<button type="submit"> Update Task </button>  
+		<br/>  
+	</form> 
+	<br>
+	<br>
+	<b>Data:</b><br><br>
+	{% for i in data %}
+	    ID = {{ i["_id"] }} <br>
+	        Description = {{ i["description"] }}<br>
+		    }<br><br>
+	{% endfor %}
+-->
 </body>
-
 </html>
