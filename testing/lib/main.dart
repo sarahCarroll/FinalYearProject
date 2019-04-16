@@ -8,6 +8,7 @@ import 'package:testing/lynchs.dart';
 import 'package:testing/nicholas.dart';
 import 'package:testing/brownes.dart';
 import 'package:testing/walls.dart';
+import 'package:testing/maps.dart';
 
 var myKey = "AIzaSyDzLAc2Uos2XNBT26mMJRqQ33aHoSnF0oM";
 
@@ -44,7 +45,7 @@ class _MySplashPageState extends State<MySplashPage> {
     // TODO: implement initState
     super.initState();
     Timer(
-        Duration(seconds: 5),
+        Duration(seconds: 7),
         () => Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => _MyHomePageState()),
@@ -68,7 +69,10 @@ class _MySplashPageState extends State<MySplashPage> {
           new Text(
             "athors: Abigail Culkin and Sarah Carroll",
             textAlign: TextAlign.center,
-          )
+          ),
+          new Image(
+            image: AssetImage("images/guide.png"),
+          ),
         ]));
   }
 }
@@ -149,6 +153,16 @@ class _MyHomePageState extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => MyWallPage()),
+            );
+            //MaterialPageRoute(builder: (context) => ));
+          }),
+      new RaisedButton(
+          child: Text('Location'),
+          onPressed: () {
+            //Navigator.pushNamed(context, MyHallPage.routeName);
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Map1()),
             );
             //MaterialPageRoute(builder: (context) => ));
           }),
