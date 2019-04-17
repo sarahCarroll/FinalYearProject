@@ -4,7 +4,7 @@ from flask import request, jsonify, render_template,request,redirect,url_for # F
 from bson.objectid import ObjectId # For ObjectId to work 
 from app import app, mongo
 import logger
-
+from bson.objectid import ObjectId
 
 ROOT_PATH = os.environ.get('ROOT_PATH')
 LOG = logger.get_root_logger(
@@ -28,15 +28,15 @@ def user():
     data = request.get_json()
 
     if request.method == 'POST':
-        if data.get('name', None) is not None and data.get('email', None) is not None:
+        if data.get('_id', None) is not None and data.get('description', None) is not None:
             mongo.db.users.insert_one(data)
-            return jsonify({'ok': True, 'message': 'User created successfully!'}), 200
+            return jsonify({'ok': True, 'message': 'created successfully!'}), 200
         else:
             return jsonify({'ok': False, 'message': 'Bad request parameters!'}), 400
 
     if request.method == 'DELETE':
-        if data.get('email', None) is not None:
-            db_response = mongo.db.users.delete_one({'email': data['email']})
+        if data.get('description', None) is not None:
+            db_response = mongo.db.users.delete_one({'description': data['description']})
             if db_response.deleted_count == 1:
                 response = {'ok': True, 'message': 'record deleted'}
             else:
@@ -44,69 +44,58 @@ def user():
             return jsonify(response), 200
         else:
             return jsonify({'ok': False, 'message': 'Bad request parameters!'}), 400
- 
+
     if request.method == 'PATCH':
         if data.get('query', {}) != {}:
             mongo.db.users.update_one(
-                data['query'], {'$set': data.get('payload', {})})
+                data['query'], {'$set': data.get('multi', {})})
             return jsonify({'ok': True, 'message': 'record updated'}), 200
         else:
             return jsonify({'ok': False, 'message': 'Bad request parameters!'}), 400
-# @app.route("/list")  
-# def lists ():  
-#     #Display the all Tasks  
-#     infos=mongo.db.info.find()  
-#     a1="active"  
-#     return render_template('index.html', a1=a1,information=infos)  
- 
-# @app.route("/action", methods=['POST'])  
-# def action ():  
-    # if data.get('_id', None) is not None and data.get('description', None) is not None:
-    #     mongo.db.info.insert_one(data)
-    #     return jsonify({'ok': True, 'message': 'User created successfully!'}), 200
-    # else:
-    #     return jsonify({'ok': False, 'message': 'Bad request parameters!'}), 400
-#     #Adding a Task  
-#     description=request.values.get("description")  
-#     mongo.db.info.insert({ "description":description,"done":"no"})  
-#     return redirect("/list")  
- 
-# @app.route("/remove",  methods=['DELETE'])  
-# def remove ():  
-    # if data.get('_id', None) is not None:
-    #             project_db = mongo.db.info.delete_one({'_id': data['_id']})
-    #             if project_db.deleted_count == 1:
-    #                 response = {'ok': True, 'message': 'record deleted'}
-    #             else:
-    #                 response = {'ok': True, 'message': 'no record found'}
-    #             return jsonify(response), 200
-    #         else:
-    #             return jsonify({'ok': False, 'message': 'Bad request parameters!'}), 400
-#     #Deleting a Task with various references  
-#     key=request.values.get("_id")  
-#     mongo.db.info.remove({"_id":ObjectId(key)})  
-#     return redirect("/")  
- 
-# @app.route("/update", methods=['Patch'])  
-# def update ():  
-        # if data.get('query', {}) != {}:
-        #     mongo.db.info.update_one(
-        #         data['query'], {'$set': data.get('description', {})})
-        #     return jsonify({'ok': True, 'message': 'record updated'}), 200
-        # else:
-        #     return jsonify({'ok': False, 'message': 'Bad request parameters!'}), 400
-#     id=request.values.get("_id")  
-#     task=mongo.db.info.find({"_id":ObjectId(id)})  
-#     return render_template('update.html', tasks=task)  
- 
-# @app.route("/action3", methods=['POST'])  
-# def action3 ():  
-#     #Updating a Task with various references  
-#     description=request.values.get("description")  
-#     id=request.values.get("_id")  
-#     mongo.db.info.update({"_id":ObjectId(id)}, {'$set':{ "description":description }})  
-#     return redirect("/") 
 
-#     # if __name__ == "__main__":  
-  
-#     #   app.run()
+
+@app.route('/new', methods=['GET'])
+def new():
+    return render_template('add.html')
+
+@app.route('/view', methods=["GET"])
+def viewing(id):
+    data = info.find_one({
+        '_id': ObjectId(id)
+
+        })
+    return render_template('list.html', info=data)
+
+@app.route('/update', methods=['POST'])
+def update(id):
+    info.update_one({
+        '_id': ObjectId(id)
+        }, {
+            '$set': {
+                'description': request.form['description'],
+                }
+            })
+    return render_template('update.html', multi=data)
+
+@app.route('/delete', methods=["POST"])
+def remove(id):
+    data = delete_many({
+        '_id': ObjectId(id)
+
+        })
+    return redirect(url_for('list'))
+
+
+@app.route('/add', methods=["POST"])
+def adding():
+    info.insert_one({
+        '_id': request.form['_id'],
+        'description': request.form['description'],         
+     
+        })
+    return redirect(url_for('list'))
+
+
+
+                
+
