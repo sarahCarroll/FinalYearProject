@@ -3,7 +3,7 @@ import os
 from flask import request, jsonify, render_template,request,redirect,url_for # For flask implementation  
 from app import app, mongo
 import logger
-
+from bson.objectid import ObjectId
 
 ROOT_PATH = os.environ.get('ROOT_PATH')
 LOG = logger.get_root_logger(
@@ -47,17 +47,49 @@ def user():
         else:
             return jsonify({'ok': False, 'message': 'Bad request parameters!'}), 400
 
-#@app.route('/view', methods=["GET","POST"])
-#def index():
- #   if request.method == 'GET':
-  #      query = request.args
-   #     output = []
-    #    for a in mongo.db.info.find(query):
-     #       output.append({'_id': a['_id'], 'description' : a['description']})
-      #  
-       # return jsonify({'multi' : output}), 200
 
-    #data = request.get_json()
-   # return render_template('index.html', multi=output)
+@app.route('/new', methods=['GET'])
+def new():
+    return render_template('add.html')
 
+@app.route('/view', methods=["GET"])
+def viewing(id):
+    data = info.find_one({
+        '_id': ObjectId(id)
+
+        })
+    return render_template('list.html', info=data)
+
+@app.route('/update', methods=['POST'])
+def update(id):
+    info.update_one({
+        '_id': ObjectId(id)
+        }, {
+            '$set': {
+                'description': request.form['description'],
+                }
+            })
+    return render_template('update.html', multi=data)
+
+@app.route('/delete', methods=["POST"])
+def remove(id):
+    data = delete_many({
+        '_id': ObjectId(id)
+
+        })
+    return redirect(url_for('list'))
+
+
+@app.route('/add', methods=["POST"])
+def adding():
+    info.insert_one({
+        '_id': request.form['_id'],
+        'description': request.form['description'],         
+     
+        })
+    return redirect(url_for('list'))
+
+
+
+                
 
