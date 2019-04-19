@@ -1,0 +1,23 @@
+
+
+    <h1>Data</h1>
+    <table class="table table-striped table-bordered">
+	<tbody>
+	
+	<tr>
+	<td>{{_id}}</td>
+	<td>{{description}}</td>
+	<td>					            			                <a href="{{ url_for('adding', id = _id) }}" class="btn btn-xs btn-default">Add</a>
+
+	<a href="{{ url_for('update', id = _id) }}" class="btn btn-xs btn-info">Edit</a>
+	
+	<form action="{{ url_for('remove') }}" method="POST">
+	<input type="text" class="form-control" placeholder="Enter id" name="_id">
+	<button type="submit" class="btn btn-xs btn-danger">Remove</button>
+	</form>
+	</td>
+	</tr>
+
+																					        	</tbody>
+    </table>
+    				
