@@ -1,38 +1,3 @@
-<<<<<<< HEAD
-<html>  
-    <head>  
-        <title>{{t}}</title>  
-    </head>  
-    <style>     
-        h1{  
-            font-family:"Arial Black", Gadget, sans-serif;  
-        }  
-        body{  
-            background-color:white;  
-        }  
-    </style>  
-<body>  
-    <h1>{{h}}</h1>  
-    <hr>  
-    <h3>Update tasks with a reference</h3>  
-    <form action="/action3" method="POST">  
-    {% for task in tasks %}  
-        Unique Object ID : {{ task['_id'] }}<br/>  
-    <input type="text" name="_id" value="{{ task['_id'] }}" hidden>  
-  
-    <table>    
-    <tr>  
-    <td>Description</td><td> : </td><td><textarea type="text" name="descripiton" rows=3 cols=30 placeholder="{{ task['descripiton'] }}"> {{ task['desc'] }} </textarea></td>  
-    </tr>   
-    </table>  
-    {% endfor %}  
-        <button type="submit"> Update Task </button>  
-        <br/>  
-    </form>  
-    <a href="/">Return to TaskList</a>  
-</body>  
-</html>  
-=======
 {% extends 'index.html' %}
 
 {% block content %}
@@ -51,4 +16,3 @@
 	</fieldset>
 </form>
 {% endblock %}
->>>>>>> MongoConnection
