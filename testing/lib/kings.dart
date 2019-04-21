@@ -11,7 +11,7 @@ class MyKingPageUrl extends StatefulWidget {
 }
 
 class _MyKingsPageStateMore extends State<MyKingPageUrl> {
-final String url = "http://35.189.123.3/data?";
+  final String url = "http://35.189.123.3/data?";
 
   List data;
 
@@ -22,7 +22,7 @@ final String url = "http://35.189.123.3/data?";
         //only accept json response
         headers: {"Content-Type": "application/json"});
 
-     setState(() {
+    setState(() {
       var resBody = json.decode(response.body);
       data = resBody["multi"];
     });
@@ -43,7 +43,7 @@ final String url = "http://35.189.123.3/data?";
         appBar: new AppBar(
           title: new Text("Kings Head"),
         ),
-       body: new ListView.builder(
+        body: new ListView.builder(
             itemCount: data == null ? 0 : 1,
             itemBuilder: (BuildContext context, i) {
               return new Container(
@@ -61,10 +61,12 @@ final String url = "http://35.189.123.3/data?";
                         ),
                         Card(
                             child: Container(
+                          padding: new EdgeInsets.all(10.0),
                           child: Text(data[5]['description'],
+                              textAlign: TextAlign.justify,
                               style: TextStyle(
                                   fontSize: 18.0, color: Colors.black)),
-                        )),  
+                        )),
                         Container(
                           decoration: BoxDecoration(
                             image: DecorationImage(
@@ -73,14 +75,12 @@ final String url = "http://35.189.123.3/data?";
                           height: 250.0,
                           width: 600.0,
                         ),
-                        
-                  ]),
+                      ]),
                 ),
               );
             }));
   }
 }
-
 
 class MyKingsPage extends StatefulWidget {
   @override
@@ -88,7 +88,7 @@ class MyKingsPage extends StatefulWidget {
 }
 
 class _MyKingsPageState extends State<MyKingsPage> {
-final String url = "http://35.189.123.3/data?";
+  final String url = "http://35.189.123.3/data?";
   // List data;
   List data;
   //var data;
@@ -102,7 +102,7 @@ final String url = "http://35.189.123.3/data?";
 
     //print(response.body);
 
-     setState(() {
+    setState(() {
       var resBody = json.decode(response.body);
       data = resBody["multi"];
     });
@@ -117,14 +117,13 @@ final String url = "http://35.189.123.3/data?";
     // print(data);
   }
 
-
   //https://www.youtube.com/watch?v=sC9qhNPvW1M
   int photoIndex = 0;
 
   List<String> photos = [
-      "images/kings/King(1).JPG",
-      "images/kings/King(2).jpg",
-      "images/kings/King(3).gif"
+    "images/kings/King(1).JPG",
+    "images/kings/King(2).jpg",
+    "images/kings/King(3).gif"
   ];
 
   void _previousImage() {
@@ -145,7 +144,7 @@ final String url = "http://35.189.123.3/data?";
         appBar: new AppBar(
           title: new Text("Kings Head"),
         ),
-          body: new ListView.builder(
+        body: new ListView.builder(
             itemCount: data == null ? 0 : 1,
             itemBuilder: (BuildContext context, i) {
               return new Container(
@@ -169,35 +168,37 @@ final String url = "http://35.189.123.3/data?";
                                   onPressed: _previousImage),
                               RaisedButton(
                                   child: Text('next'), onPressed: _nextImage),
-                            ]),        
+                            ]),
                         Card(
                             child: Container(
+                          padding: new EdgeInsets.all(10.0),
                           child: Text(data[16]['description'],
+                              textAlign: TextAlign.justify,
                               style: TextStyle(
                                   fontSize: 18.0, color: Colors.black)),
                         )),
-           new RaisedButton(
-              child: Text('More Info'),
-              onPressed: () {
-                //Navigator.pushNamed(context, MyHallPage.routeName);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => MyKingPageUrl()),
-                );
-                //MaterialPageRoute(builder: (context) => ));
-              }),
-          new RaisedButton(
-              child: Text('Location'),
-              onPressed: () {
-                //Navigator.pushNamed(context, MyHallPage.routeName);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Map1()),
-                );
-                //MaterialPageRoute(builder: (context) => ));
-              }),
-           ]),
+                        new RaisedButton(
+                            child: Text('More Info'),
+                            onPressed: () {
+                              //Navigator.pushNamed(context, MyHallPage.routeName);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => MyKingPageUrl()),
+                              );
+                              //MaterialPageRoute(builder: (context) => ));
+                            }),
+                        new RaisedButton(
+                            child: Text('Location'),
+                            onPressed: () {
+                              //Navigator.pushNamed(context, MyHallPage.routeName);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => Map1()),
+                              );
+                              //MaterialPageRoute(builder: (context) => ));
+                            }),
+                      ]),
                 ),
               );
             }));

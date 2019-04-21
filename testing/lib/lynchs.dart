@@ -10,8 +10,8 @@ class MyLynchPageUrl extends StatefulWidget {
   _MyLynchPageStateMore createState() => new _MyLynchPageStateMore();
 }
 
-class _MyLynchPageStateMore extends State<MyLynchPageUrl>{
- final String url = "http://35.189.123.3/data?";
+class _MyLynchPageStateMore extends State<MyLynchPageUrl> {
+  final String url = "http://35.189.123.3/data?";
 
   List data;
 
@@ -22,7 +22,7 @@ class _MyLynchPageStateMore extends State<MyLynchPageUrl>{
         //only accept json response
         headers: {"Content-Type": "application/json"});
 
-     setState(() {
+    setState(() {
       var resBody = json.decode(response.body);
       data = resBody["multi"];
     });
@@ -35,7 +35,7 @@ class _MyLynchPageStateMore extends State<MyLynchPageUrl>{
     super.initState();
     getJsonData();
   }
- 
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -52,7 +52,9 @@ class _MyLynchPageStateMore extends State<MyLynchPageUrl>{
                       children: <Widget>[
                         Card(
                             child: Container(
+                          padding: new EdgeInsets.all(10.0),
                           child: Text(data[6]['description'],
+                              textAlign: TextAlign.justify,
                               style: TextStyle(
                                   fontSize: 18.0, color: Colors.black)),
                         )),
@@ -66,7 +68,9 @@ class _MyLynchPageStateMore extends State<MyLynchPageUrl>{
                         ),
                         Card(
                             child: Container(
+                          padding: new EdgeInsets.all(10.0),
                           child: Text(data[7]['description'],
+                              textAlign: TextAlign.justify,
                               style: TextStyle(
                                   fontSize: 18.0, color: Colors.black)),
                         )),
@@ -80,11 +84,13 @@ class _MyLynchPageStateMore extends State<MyLynchPageUrl>{
                         ),
                         Card(
                             child: Container(
+                          padding: new EdgeInsets.all(10.0),
                           child: Text(data[8]['description'],
+                              textAlign: TextAlign.justify,
                               style: TextStyle(
                                   fontSize: 18.0, color: Colors.black)),
                         )),
-                  ]),
+                      ]),
                 ),
               );
             }));
@@ -107,12 +113,11 @@ class _MyLynchsPageState extends State<MyLynchPage> {
         //only accept json response
         headers: {"Content-Type": "application/json"});
 
-   setState(() {
+    setState(() {
       var resBody = json.decode(response.body);
       data = resBody["multi"];
     });
 
-  
     return "data";
   }
 
@@ -121,16 +126,16 @@ class _MyLynchsPageState extends State<MyLynchPage> {
     super.initState();
     getJsonData();
   }
-  
+
   //https://www.youtube.com/watch?v=sC9qhNPvW1M
   int photoIndex = 0;
 
   List<String> photos = [
-      "images/lynch's/lynchs(1).jpg",
-      "images/lynch's/lynchs(2).jpg",
-      "images/lynch's/lynchs(3).jpg"
+    "images/lynch's/lynchs(1).jpg",
+    "images/lynch's/lynchs(2).jpg",
+    "images/lynch's/lynchs(3).jpg"
   ];
-  
+
   void _previousImage() {
     setState(() {
       photoIndex = photoIndex > 0 ? photoIndex - 1 : 0;
@@ -149,7 +154,7 @@ class _MyLynchsPageState extends State<MyLynchPage> {
         appBar: new AppBar(
           title: new Text("Lynchs Castle"),
         ),
-       body: new ListView.builder(
+        body: new ListView.builder(
             itemCount: data == null ? 0 : 1,
             itemBuilder: (BuildContext context, i) {
               return new Container(
@@ -173,35 +178,37 @@ class _MyLynchsPageState extends State<MyLynchPage> {
                                   onPressed: _previousImage),
                               RaisedButton(
                                   child: Text('next'), onPressed: _nextImage),
-                            ]),        
+                            ]),
                         Card(
                             child: Container(
+                          padding: new EdgeInsets.all(10.0),
                           child: Text(data[17]['description'],
+                              textAlign: TextAlign.justify,
                               style: TextStyle(
                                   fontSize: 18.0, color: Colors.black)),
                         )),
-              new RaisedButton(
-              child: Text('More Info'),
-              onPressed: () {
-                //Navigator.pushNamed(context, MyHallPage.routeName);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => MyLynchPageUrl()),
-                );
-                //MaterialPageRoute(builder: (context) => ));
-              }),
-          new RaisedButton(
-              child: Text('Location'),
-              onPressed: () {
-                //Navigator.pushNamed(context, MyHallPage.routeName);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Map1()),
-                );
-                //MaterialPageRoute(builder: (context) => ));
-              }),
-        ]),
+                        new RaisedButton(
+                            child: Text('More Info'),
+                            onPressed: () {
+                              //Navigator.pushNamed(context, MyHallPage.routeName);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => MyLynchPageUrl()),
+                              );
+                              //MaterialPageRoute(builder: (context) => ));
+                            }),
+                        new RaisedButton(
+                            child: Text('Location'),
+                            onPressed: () {
+                              //Navigator.pushNamed(context, MyHallPage.routeName);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => Map1()),
+                              );
+                              //MaterialPageRoute(builder: (context) => ));
+                            }),
+                      ]),
                 ),
               );
             }));

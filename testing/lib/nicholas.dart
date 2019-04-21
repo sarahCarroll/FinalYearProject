@@ -5,13 +5,12 @@ import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
 
-
 class MyStPageUrl extends StatefulWidget {
   @override
   _MyNicholasPageStateMore createState() => new _MyNicholasPageStateMore();
 }
-class _MyNicholasPageStateMore extends State<MyStPageUrl> {
 
+class _MyNicholasPageStateMore extends State<MyStPageUrl> {
   //final String urlGET = "http://35.189.123.3/data?_id=";
   final String url = "http://35.189.123.3/data?";
 
@@ -24,7 +23,7 @@ class _MyNicholasPageStateMore extends State<MyStPageUrl> {
         //only accept json response
         headers: {"Content-Type": "application/json"});
 
-     setState(() {
+    setState(() {
       var resBody = json.decode(response.body);
       data = resBody["multi"];
     });
@@ -36,14 +35,14 @@ class _MyNicholasPageStateMore extends State<MyStPageUrl> {
     super.initState();
     getJsonData();
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: new AppBar(
           title: new Text("St.Nicholas Church"),
         ),
-       body: new ListView.builder(
+        body: new ListView.builder(
             itemCount: data == null ? 0 : 1,
             itemBuilder: (BuildContext context, i) {
               return new Container(
@@ -53,7 +52,9 @@ class _MyNicholasPageStateMore extends State<MyStPageUrl> {
                       children: <Widget>[
                         Card(
                             child: Container(
+                          padding: new EdgeInsets.all(10.0),
                           child: Text(data[10]['description'],
+                              textAlign: TextAlign.justify,
                               style: TextStyle(
                                   fontSize: 18.0, color: Colors.black)),
                         )),
@@ -67,7 +68,9 @@ class _MyNicholasPageStateMore extends State<MyStPageUrl> {
                         ),
                         Card(
                             child: Container(
+                          padding: new EdgeInsets.all(10.0),
                           child: Text(data[11]['description'],
+                              textAlign: TextAlign.justify,
                               style: TextStyle(
                                   fontSize: 18.0, color: Colors.black)),
                         )),
@@ -81,11 +84,13 @@ class _MyNicholasPageStateMore extends State<MyStPageUrl> {
                         ),
                         Card(
                             child: Container(
+                          padding: new EdgeInsets.all(10.0),
                           child: Text(data[12]['description'],
+                              textAlign: TextAlign.justify,
                               style: TextStyle(
                                   fontSize: 18.0, color: Colors.black)),
                         )),
-                         Container(
+                        Container(
                           decoration: BoxDecoration(
                             image: DecorationImage(
                                 image: AssetImage("images/Hall/Hall(3).png")),
@@ -95,11 +100,13 @@ class _MyNicholasPageStateMore extends State<MyStPageUrl> {
                         ),
                         Card(
                             child: Container(
+                          padding: new EdgeInsets.all(10.0),
                           child: Text(data[13]['description'],
+                              textAlign: TextAlign.justify,
                               style: TextStyle(
                                   fontSize: 18.0, color: Colors.black)),
                         )),
-                  ]),
+                      ]),
                 ),
               );
             }));
@@ -122,11 +129,10 @@ class _MyNicholasPageState extends State<MyNicholasPage> {
         //only accept json response
         headers: {"Content-Type": "application/json"});
 
-     setState(() {
+    setState(() {
       var resBody = json.decode(response.body);
       data = resBody["multi"];
     });
-
 
     return "data";
   }
@@ -137,15 +143,14 @@ class _MyNicholasPageState extends State<MyNicholasPage> {
     getJsonData();
   }
 
- 
   //https://www.youtube.com/watch?v=sC9qhNPvW1M
   int photoIndex = 0;
 
   List<String> photos = [
-      "images/nicks/Nicks(1).jpg",
-      "images/nicks/Nicks(2).jpg",
-      "images/nicks/Nicks(3).JPG",
-      "images/nicks/Nicks(4).jpg"
+    "images/nicks/Nicks(1).jpg",
+    "images/nicks/Nicks(2).jpg",
+    "images/nicks/Nicks(3).JPG",
+    "images/nicks/Nicks(4).jpg"
   ];
 
   void _previousImage() {
@@ -190,35 +195,37 @@ class _MyNicholasPageState extends State<MyNicholasPage> {
                                   onPressed: _previousImage),
                               RaisedButton(
                                   child: Text('next'), onPressed: _nextImage),
-                            ]),        
+                            ]),
                         Card(
                             child: Container(
+                          padding: new EdgeInsets.all(10.0),
                           child: Text(data[18]['description'],
+                              textAlign: TextAlign.justify,
                               style: TextStyle(
                                   fontSize: 18.0, color: Colors.black)),
                         )),
-                  new RaisedButton(
-                  child: Text('More Info'),
-                  onPressed: () {
-                    //Navigator.pushNamed(context, MyHallPage.routeName);
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => MyStPageUrl()),
-                    );
-                //MaterialPageRoute(builder: (context) => ));
-              }),
-          new RaisedButton(
-              child: Text('Location'),
-              onPressed: () {
-                //Navigator.pushNamed(context, MyHallPage.routeName);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Map1()),
-                );
-                //MaterialPageRoute(builder: (context) => ));
-              }),
-        ]),
+                        new RaisedButton(
+                            child: Text('More Info'),
+                            onPressed: () {
+                              //Navigator.pushNamed(context, MyHallPage.routeName);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => MyStPageUrl()),
+                              );
+                              //MaterialPageRoute(builder: (context) => ));
+                            }),
+                        new RaisedButton(
+                            child: Text('Location'),
+                            onPressed: () {
+                              //Navigator.pushNamed(context, MyHallPage.routeName);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => Map1()),
+                              );
+                              //MaterialPageRoute(builder: (context) => ));
+                            }),
+                      ]),
                 ),
               );
             }));

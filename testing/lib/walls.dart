@@ -5,13 +5,12 @@ import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
 
-
 class MyWallPageUrl extends StatefulWidget {
   @override
   _MyWallsPageStateMore createState() => new _MyWallsPageStateMore();
 }
-class _MyWallsPageStateMore extends State<MyWallPageUrl>  {
- 
+
+class _MyWallsPageStateMore extends State<MyWallPageUrl> {
   final String url = "http://35.189.123.3/data?";
 
   List data;
@@ -23,12 +22,11 @@ class _MyWallsPageStateMore extends State<MyWallPageUrl>  {
         //only accept json response
         headers: {"Content-Type": "application/json"});
 
-      setState(() {
+    setState(() {
       var resBody = json.decode(response.body);
       data = resBody["multi"];
     });
 
-  
     return "data";
   }
 
@@ -38,14 +36,13 @@ class _MyWallsPageStateMore extends State<MyWallPageUrl>  {
     getJsonData();
   }
 
-
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: new AppBar(
           title: new Text("Medieval Walls"),
         ),
-       body: new ListView.builder(
+        body: new ListView.builder(
             itemCount: data == null ? 0 : 1,
             itemBuilder: (BuildContext context, i) {
               return new Container(
@@ -55,7 +52,9 @@ class _MyWallsPageStateMore extends State<MyWallPageUrl>  {
                       children: <Widget>[
                         Card(
                             child: Container(
+                          padding: new EdgeInsets.all(10.0),
                           child: Text(data[14]['description'],
+                              textAlign: TextAlign.justify,
                               style: TextStyle(
                                   fontSize: 18.0, color: Colors.black)),
                         )),
@@ -69,7 +68,9 @@ class _MyWallsPageStateMore extends State<MyWallPageUrl>  {
                         ),
                         Card(
                             child: Container(
+                          padding: new EdgeInsets.all(10.0),
                           child: Text(data[9]['description'],
+                              textAlign: TextAlign.justify,
                               style: TextStyle(
                                   fontSize: 18.0, color: Colors.black)),
                         )),
@@ -81,7 +82,7 @@ class _MyWallsPageStateMore extends State<MyWallPageUrl>  {
                           height: 250.0,
                           width: 600.0,
                         ),
-                  ]),
+                      ]),
                 ),
               );
             }));
@@ -94,7 +95,7 @@ class MyWallPage extends StatefulWidget {
 }
 
 class _MyWallsPageState extends State<MyWallPage> {
-   final String url = "http://35.189.123.3/data?";
+  final String url = "http://35.189.123.3/data?";
   List data;
 
   Future<String> getJsonData() async {
@@ -104,7 +105,7 @@ class _MyWallsPageState extends State<MyWallPage> {
         //only accept json response
         headers: {"Content-Type": "application/json"});
 
-     setState(() {
+    setState(() {
       var resBody = json.decode(response.body);
       data = resBody["multi"];
     });
@@ -117,14 +118,14 @@ class _MyWallsPageState extends State<MyWallPage> {
     super.initState();
     getJsonData();
   }
-  
+
   //https://www.youtube.com/watch?v=sC9qhNPvW1M
   int photoIndex = 0;
 
   List<String> photos = [
-      "images/walls/walls(1).JPG",
-      "images/walls/walls(2).jpg",
-      "images/walls/walls(3).JPG"
+    "images/walls/walls(1).JPG",
+    "images/walls/walls(2).jpg",
+    "images/walls/walls(3).JPG"
   ];
 
   void _previousImage() {
@@ -145,7 +146,7 @@ class _MyWallsPageState extends State<MyWallPage> {
         appBar: new AppBar(
           title: new Text("Medieval Walls"),
         ),
-         body: new ListView.builder(
+        body: new ListView.builder(
             itemCount: data == null ? 0 : 1,
             itemBuilder: (BuildContext context, i) {
               return new Container(
@@ -169,35 +170,37 @@ class _MyWallsPageState extends State<MyWallPage> {
                                   onPressed: _previousImage),
                               RaisedButton(
                                   child: Text('next'), onPressed: _nextImage),
-                            ]),        
+                            ]),
                         Card(
                             child: Container(
+                          padding: new EdgeInsets.all(10.0),
                           child: Text(data[19]['description'],
+                              textAlign: TextAlign.justify,
                               style: TextStyle(
                                   fontSize: 18.0, color: Colors.black)),
                         )),
-              new RaisedButton(
-              child: Text('More Info'),
-              onPressed: () {
-                //Navigator.pushNamed(context, MyHallPage.routeName);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => MyWallPageUrl()),
-                );
-                //MaterialPageRoute(builder: (context) => ));
-              }),
-          new RaisedButton(
-              child: Text('Location'),
-              onPressed: () {
-                //Navigator.pushNamed(context, MyHallPage.routeName);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Map1()),
-                );
-                //MaterialPageRoute(builder: (context) => ));
-              }),
-          ]),
+                        new RaisedButton(
+                            child: Text('More Info'),
+                            onPressed: () {
+                              //Navigator.pushNamed(context, MyHallPage.routeName);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => MyWallPageUrl()),
+                              );
+                              //MaterialPageRoute(builder: (context) => ));
+                            }),
+                        new RaisedButton(
+                            child: Text('Location'),
+                            onPressed: () {
+                              //Navigator.pushNamed(context, MyHallPage.routeName);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => Map1()),
+                              );
+                              //MaterialPageRoute(builder: (context) => ));
+                            }),
+                      ]),
                 ),
               );
             }));

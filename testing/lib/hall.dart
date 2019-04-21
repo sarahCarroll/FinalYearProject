@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:testing/widget.dart';
 import 'package:testing/maps.dart';
-import 'package:testing/info_model.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
-
 
 class MyHallPageUrl extends StatefulWidget {
   @override
   _MyHallPageStateMore createState() => new _MyHallPageStateMore();
 }
-class _MyHallPageStateMore extends State<MyHallPageUrl> {
-final String url = "http://35.189.123.3/data?";
 
-     List data;
+class _MyHallPageStateMore extends State<MyHallPageUrl> {
+  final String url = "http://35.189.123.3/data?";
+
+  List data;
   //Map<String, dynamic> data;
   //var data;
 
@@ -43,13 +41,14 @@ final String url = "http://35.189.123.3/data?";
     getJsonData();
     // print(data);
   }
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: new AppBar(
           title: new Text("Hall Of the Red Earl"),
         ),
-         body: new ListView.builder(
+        body: new ListView.builder(
             itemCount: data == null ? 0 : 1,
             itemBuilder: (BuildContext context, i) {
               return new Container(
@@ -59,7 +58,9 @@ final String url = "http://35.189.123.3/data?";
                       children: <Widget>[
                         Card(
                             child: Container(
+                          padding: new EdgeInsets.all(10.0),
                           child: Text(data[i]['description'],
+                              textAlign: TextAlign.justify,
                               style: TextStyle(
                                   fontSize: 18.0, color: Colors.black)),
                         )),
@@ -73,7 +74,9 @@ final String url = "http://35.189.123.3/data?";
                         ),
                         Card(
                             child: Container(
+                          padding: new EdgeInsets.all(10.0),
                           child: Text(data[1]['description'],
+                              textAlign: TextAlign.justify,
                               style: TextStyle(
                                   fontSize: 18.0, color: Colors.black)),
                         )),
@@ -87,11 +90,13 @@ final String url = "http://35.189.123.3/data?";
                         ),
                         Card(
                             child: Container(
+                          padding: new EdgeInsets.all(10.0),
                           child: Text(data[2]['description'],
+                              textAlign: TextAlign.justify,
                               style: TextStyle(
                                   fontSize: 18.0, color: Colors.black)),
                         )),
-                  ]),
+                      ]),
                 ),
               );
             }));
@@ -105,7 +110,7 @@ class MyHallPage extends StatefulWidget {
 
 class _MyHallPageState extends State<MyHallPage> {
   final String url = "http://35.189.123.3/data?";
-   List data;
+  List data;
   //Map<String, dynamic> data;
   //var data;
 
@@ -189,14 +194,16 @@ class _MyHallPageState extends State<MyHallPage> {
                                   onPressed: _previousImage),
                               RaisedButton(
                                   child: Text('next'), onPressed: _nextImage),
-                            ]),        
+                            ]),
                         Card(
                             child: Container(
+                          padding: new EdgeInsets.all(10.0),
                           child: Text(data[20]['description'],
+                              textAlign: TextAlign.justify,
                               style: TextStyle(
                                   fontSize: 18.0, color: Colors.black)),
                         )),
-                       
+
                         new RaisedButton(
                             child: Text('More info'),
                             onPressed: () {
@@ -204,8 +211,7 @@ class _MyHallPageState extends State<MyHallPage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) =>
-                                        MyHallPageUrl()),
+                                    builder: (context) => MyHallPageUrl()),
                               );
                               //MaterialPageRoute(builder: (context) => ));
                             }),

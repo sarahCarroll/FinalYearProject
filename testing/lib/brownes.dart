@@ -9,6 +9,7 @@ class MyBrownePageUrl extends StatefulWidget {
   @override
   _MyBrownesPageStateMore createState() => new _MyBrownesPageStateMore();
 }
+
 class _MyBrownesPageStateMore extends State<MyBrownePageUrl> {
   final String url = "http://35.189.123.3/data?";
 
@@ -21,7 +22,7 @@ class _MyBrownesPageStateMore extends State<MyBrownePageUrl> {
         //only accept json response
         headers: {"Content-Type": "application/json"});
 
-      setState(() {
+    setState(() {
       var resBody = json.decode(response.body);
       data = resBody["multi"];
     });
@@ -34,7 +35,7 @@ class _MyBrownesPageStateMore extends State<MyBrownePageUrl> {
     super.initState();
     getJsonData();
   }
- 
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -51,25 +52,30 @@ class _MyBrownesPageStateMore extends State<MyBrownePageUrl> {
                       children: <Widget>[
                         Card(
                             child: Container(
+                          padding: new EdgeInsets.all(10.0),
                           child: Text(data[3]['description'],
+                              textAlign: TextAlign.justify,
                               style: TextStyle(
                                   fontSize: 18.0, color: Colors.black)),
                         )),
                         Container(
                           decoration: BoxDecoration(
                             image: DecorationImage(
-                                image: AssetImage("images/brownes/browne(3).jpg")),
+                                image:
+                                    AssetImage("images/brownes/browne(3).jpg")),
                           ),
                           height: 250.0,
                           width: 600.0,
                         ),
                         Card(
                             child: Container(
+                          padding: new EdgeInsets.all(10.0),
                           child: Text(data[4]['description'],
+                              textAlign: TextAlign.justify,
                               style: TextStyle(
                                   fontSize: 18.0, color: Colors.black)),
                         )),
-                  ]),
+                      ]),
                 ),
               );
             }));
@@ -82,8 +88,8 @@ class MyBrownesPage extends StatefulWidget {
 }
 
 class _MyBrownesPageState extends State<MyBrownesPage> {
-final String url = "http://35.189.123.3/data?";
-  
+  final String url = "http://35.189.123.3/data?";
+
   List data;
 
   Future<String> getJsonData() async {
@@ -93,7 +99,7 @@ final String url = "http://35.189.123.3/data?";
         //only accept json response
         headers: {"Content-Type": "application/json"});
 
-     setState(() {
+    setState(() {
       var resBody = json.decode(response.body);
       data = resBody["multi"];
     });
@@ -111,10 +117,10 @@ final String url = "http://35.189.123.3/data?";
   int photoIndex = 0;
 
   List<String> photos = [
-      "images/brownes/browne(1).jpg",
-      "images/brownes/browne(2).jpg",
-      "images/brownes/browne(3).jpg",
-      "images/brownes/browne(4).JPG"
+    "images/brownes/browne(1).jpg",
+    "images/brownes/browne(2).jpg",
+    "images/brownes/browne(3).jpg",
+    "images/brownes/browne(4).JPG"
   ];
 
   void _previousImage() {
@@ -159,35 +165,37 @@ final String url = "http://35.189.123.3/data?";
                                   onPressed: _previousImage),
                               RaisedButton(
                                   child: Text('next'), onPressed: _nextImage),
-                            ]),        
+                            ]),
                         Card(
                             child: Container(
+                          padding: new EdgeInsets.all(10.0),
                           child: Text(data[15]['description'],
+                              textAlign: TextAlign.justify,
                               style: TextStyle(
                                   fontSize: 18.0, color: Colors.black)),
                         )),
-                new RaisedButton(
-              child: Text('More Info'),
-              onPressed: () {
-                //Navigator.pushNamed(context, MyHallPage.routeName);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => MyBrownePageUrl()),
-                );
-                //MaterialPageRoute(builder: (context) => ));
-              }),
-          new RaisedButton(
-              child: Text('Location'),
-              onPressed: () {
-                //Navigator.pushNamed(context, MyHallPage.routeName);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Map1()),
-                );
-                //MaterialPageRoute(builder: (context) => ));
-              }),
-           ]),
+                        new RaisedButton(
+                            child: Text('More Info'),
+                            onPressed: () {
+                              //Navigator.pushNamed(context, MyHallPage.routeName);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => MyBrownePageUrl()),
+                              );
+                              //MaterialPageRoute(builder: (context) => ));
+                            }),
+                        new RaisedButton(
+                            child: Text('Location'),
+                            onPressed: () {
+                              //Navigator.pushNamed(context, MyHallPage.routeName);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => Map1()),
+                              );
+                              //MaterialPageRoute(builder: (context) => ));
+                            }),
+                      ]),
                 ),
               );
             }));
