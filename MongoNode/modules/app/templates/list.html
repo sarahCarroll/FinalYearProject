@@ -7,7 +7,7 @@
 	<tr>
 	<td>{{_id}}</td>
 	<td>{{description}}</td>
-	<td>					            			                <a href="{{ url_for('adding', id = _id) }}" class="btn btn-xs btn-default">Add</a>
+	<td><a href="{{ url_for('user', id = _id) }}" class="btn btn-xs btn-default">View</a>
 
 	<a href="{{ url_for('update', id = _id) }}" class="btn btn-xs btn-info">Edit</a>
 	
