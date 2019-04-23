@@ -32,39 +32,54 @@ class Map1 extends StatelessWidget {
             title: "Recently Visited"),
         toolbarActions: [new ToolbarAction("Close", 0)]);
 
-    List<Polygon> polygons = <Polygon>[
-      new Polygon(
-          "Nice one",
-          <Location>[
-            new Location(53.2710, -9.0537),
-            new Location(53.2722, -9.0533),
-            new Location(53.2727, -9.0539),
-            new Location(53.2732, -9.0523),
-            new Location(53.2747, -9.0500),
-            new Location(53.2738, -9.0507),
-          ],
-          //jointType: FigureJointType.round,
-          strokeColor: Colors.blue,
-          strokeWidth: 10.0,
-          fillColor: Colors.blue.withOpacity(0.1))
+    List<Polyline> polygons = <Polyline>[
+      new Polyline(
+        "Nice one",
+        <Location>[
+          new Location(53.2710, -9.0537),
+          new Location(53.2722, -9.0533),
+          new Location(53.2727, -9.0539),
+          new Location(53.2732, -9.0523),
+          new Location(53.2747, -9.0500),
+          new Location(53.2738, -9.0507),
+        ],
+        width: 15.0,
+        color: Colors.blue,
+      )
     ];
 
     mapView.onMapTapped.listen((tapped) {
       mapView.setMarkers(markers);
       mapView.zoomToFit(padding: 100);
-      mapView.setPolygons(polygons);
+      mapView.setPolylines(polygons);
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-        appBar: new AppBar(
-          title: new Text("press back"),
+      appBar: new AppBar(
+        title: new Text('Google Maps'),
+      ),
+      body: new Center(
+        child: Container(
+          child: RaisedButton(
+            child: Text('Tap me'),
+            color: Colors.blue,
+            textColor: Colors.white,
+            elevation: 7.0,
+            onPressed: displayMap,
+          ),
         ),
-        body: new ListView(children: <Widget>[
-          displayMap(),
-          new Text("press back to go back to previous page")
-        ]));
+      ),
+    );
+    // return new Scaffold(
+    //     appBar: new AppBar(
+    //       title: new Text("press back"),
+    //     ),
+    //     body: new ListView(children: <Widget>[
+    //       displayMap(),
+    //       new Text("press back to go back to previous page")
+    //     ]));
   }
 }
