@@ -11,10 +11,12 @@ class MyBrownePageUrl extends StatefulWidget {
 }
 
 class _MyBrownesPageStateMore extends State<MyBrownePageUrl> {
+  //Calls the URL that contains the database as a string
   final String url = "http://35.189.123.3/data?";
 
   List data;
 
+  //Method gets JSON data from URL provided
   Future<String> getJsonData() async {
     final response = await http.get(
         //encode the url
@@ -22,6 +24,7 @@ class _MyBrownesPageStateMore extends State<MyBrownePageUrl> {
         //only accept json response
         headers: {"Content-Type": "application/json"});
 
+  //Reloads the state when the app is run and in app page
     setState(() {
       var resBody = json.decode(response.body);
       data = resBody["multi"];
@@ -43,6 +46,8 @@ class _MyBrownesPageStateMore extends State<MyBrownePageUrl> {
           title: new Text("Brownes Doorway"),
         ),
         body: new ListView.builder(
+          //item cound takes in the data variable that calls the json decoder
+          //The one means one piece of information will be displayed
             itemCount: data == null ? 0 : 1,
             itemBuilder: (BuildContext context, i) {
               return new Container(
@@ -53,6 +58,7 @@ class _MyBrownesPageStateMore extends State<MyBrownePageUrl> {
                         Card(
                             child: Container(
                           padding: new EdgeInsets.all(10.0),
+                          //Calls a specific field in the database
                           child: Text(data[3]['description'],
                               textAlign: TextAlign.justify,
                               style: TextStyle(
