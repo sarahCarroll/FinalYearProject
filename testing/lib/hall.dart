@@ -10,6 +10,7 @@ class MyHallPageUrl extends StatefulWidget {
 }
 
 class _MyHallPageStateMore extends State<MyHallPageUrl> {
+  //call server
   final String url = "http://35.189.123.3/data?";
 
   List data;
@@ -58,8 +59,10 @@ class _MyHallPageStateMore extends State<MyHallPageUrl> {
                       children: <Widget>[
                         Card(
                             child: Container(
+                          //pad the conrainer
                           padding: new EdgeInsets.all(10.0),
                           child: Text(data[i]['description'],
+                              //align text to span across the entire screen
                               textAlign: TextAlign.justify,
                               style: TextStyle(
                                   fontSize: 18.0, color: Colors.black)),

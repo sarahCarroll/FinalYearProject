@@ -31,6 +31,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
+//first thing called when application is launched.
 class MySplashPage extends StatefulWidget {
   MySplashPage({Key key, this.title}) : super(key: key);
 
@@ -44,6 +45,8 @@ class _MySplashPageState extends State<MySplashPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    // times is set so that the splashscreen appears for 7 seconds when the application is first launched.
+    //the application then launches the _myHomePageState .this is a stateful widget.
     Timer(
         Duration(seconds: 7),
         () => Navigator.push(
@@ -65,10 +68,17 @@ class _MySplashPageState extends State<MySplashPage> {
           new Text(
             "Medieval Walking Tour",
             textAlign: TextAlign.center,
+            //determine size of font
+            style: new TextStyle(
+              fontSize: 16.0,
+            ),
           ),
           new Text(
-            "athors: Abigail Culkin and Sarah Carroll",
+            "Developers: Abigail Culkin and Sarah Carroll",
             textAlign: TextAlign.center,
+            style: new TextStyle(
+              fontSize: 15.0,
+            ),
           ),
           new Image(
             image: AssetImage("images/guide.png"),
@@ -77,6 +87,7 @@ class _MySplashPageState extends State<MySplashPage> {
   }
 }
 
+//home page stateless widget.
 class _MyHomePageState extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -89,33 +100,30 @@ class _MyHomePageState extends StatelessWidget {
           fontSize: 30.0,
         ),
       ),
+      //call MyImageWidget for widget.dart.
       new MyImageWidget(),
       new RaisedButton(
           child: Text('Hall Of the Red Earl '),
           onPressed: () {
-            //Navigator.pushNamed(context, MyHallPage.routeName);
+            //when button chicked navigate to myHallPage. this is a widget in hall.dart imported at top.
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => MyHallPage()),
             );
-            //MaterialPageRoute(builder: (context) => ));
           }),
       new MyKingsWidget(),
       new RaisedButton(
           child: Text('Kings Head'),
           onPressed: () {
-            //Navigator.pushNamed(context, MyHallPage.routeName);
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => MyKingsPage()),
             );
-            //MaterialPageRoute(builder: (context) => ));
           }),
       new MyNicholasWidget(),
       new Container(
         child: RaisedButton(
             child: Text('St.Nicholas Church'),
-            elevation: 7.8,
             onPressed: () {
               Navigator.push(
                 context,
@@ -127,44 +135,36 @@ class _MyHomePageState extends StatelessWidget {
       new RaisedButton(
           child: Text('Lynchs Castle'),
           onPressed: () {
-            //Navigator.pushNamed(context, MyHallPage.routeName);
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => MyLynchPage()),
             );
-            //MaterialPageRoute(builder: (context) => ));
           }),
       new MyBrownesWidget(),
       new RaisedButton(
           child: Text('Brownes Doorway'),
           onPressed: () {
-            //Navigator.pushNamed(context, MyHallPage.routeName);
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => MyBrownesPage()),
             );
-            //MaterialPageRoute(builder: (context) => ));
           }),
       new MyWallWidget(),
       new RaisedButton(
           child: Text('Medieval Walls'),
           onPressed: () {
-            //Navigator.pushNamed(context, MyHallPage.routeName);
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => MyWallPage()),
             );
-            //MaterialPageRoute(builder: (context) => ));
           }),
       new RaisedButton(
           child: Text('Location'),
           onPressed: () {
-            //Navigator.pushNamed(context, MyHallPage.routeName);
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => Map1()),
             );
-            //MaterialPageRoute(builder: (context) => ));
           }),
     ]));
   }
