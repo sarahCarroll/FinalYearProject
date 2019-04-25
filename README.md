@@ -15,7 +15,7 @@
 * Locate repository on pc using command prompt.
 * Install flutter and dart plugins on visual Studio Code. [Follow Instructions](https://flutter.dev/docs/get-started/editor?tab=vscode)
 * run command "flutter doctor" in command prompt to ensure everything is downloaded and installed correctly.
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+![alt text](https://github.com/sarahCarroll/FinalYearProject/blob/master/img/FlutterDoctor.PNG "Logo Title Text 1")
 
 ## User Guide
 * In order to use the application Run "Flutter run" in the command prompt when inside FinalYearProject\testing folder.
